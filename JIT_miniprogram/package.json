@@ -1,0 +1,14 @@
+{
+  "name": "jit_miniprogram",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "程剑辉 张伟业 包坤航",
+  "license": "ISC",
+  "dependencies": {
+    "@vant/weapp": "^1.10.3"
+  }
+}
