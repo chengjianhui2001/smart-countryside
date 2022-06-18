@@ -1,5 +1,0 @@
-/* pages/home/home.wxss */
-#home {
-  height: 100vh;
-  width: 100vw;
-}
