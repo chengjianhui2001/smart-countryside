@@ -1,0 +1,55 @@
+<!--pages/function/function.wxml-->
+<swiper class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+  <swiper-item wx:for="{{4}}" wx:key="id">
+    <image src="../../images/function/{{item}}.jpg" mode='aspectFill'></image>
+  </swiper-item>
+</swiper>
+
+<view class="main">
+
+  <van-sidebar active-key="{{ activeKey }}" bind:change="onChange">
+    <van-sidebar-item title="产业振兴" />
+    <van-sidebar-item title="人才振兴" />
+    <van-sidebar-item title="文化振兴" />
+    <van-sidebar-item title="生态振兴" />
+  </van-sidebar>
+
+  <block wx:if="{{activeKey===0}}">
+    <view class="cu-card card_s">
+      <van-grid column-num="3">
+        <van-grid-item icon="photo-o" text="同镇任务"/>
+      </van-grid>
+    </view>
+  </block>
+
+  <block wx:if="{{activeKey===1}}">
+    <view class="cu-card card_s" >
+      <van-grid column-num="3">
+        <van-grid-item icon="photo-o" text="人才需求"/>
+        <van-grid-item icon="photo-o" text="简历投递"/>
+      </van-grid>
+    </view>
+  </block>
+
+  <block wx:if="{{activeKey===2}}">
+    <view class="cu-card card_s" >
+      <van-grid column-num="3">
+        <van-grid-item icon="photo-o" text="小镇介绍"/>
+        <van-grid-item icon="photo-o" text="人文特色"/>
+        <van-grid-item icon="photo-o" text="饮食文化"/>
+      </van-grid>
+    </view>
+  </block>
+
+  <block wx:if="{{activeKey===3}}">
+    <view class="cu-card card_s" >
+      <van-grid column-num="3">
+        <van-grid-item icon="photo-o" text="生态建设"/>
+      </van-grid>
+    </view>
+  </block>
+
+</view>
+
+
+

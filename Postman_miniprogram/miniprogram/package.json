@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "@vant/weapp": "^1.10.3"
+  },
+  "name": "miniprogram",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "程剑辉 张伟业 包坤航 王捷",
+  "license": "ISC",
+  "description": ""
+}
