@@ -1,0 +1,1 @@
+"D:\SoftwareDev\微信web开发者工具\cli.bat" cloud functions deploy --e cloud1-5g1oimlb11d4eb78 --n quickstartFunctions --r --project "D:\学习\微信小程序大赛\源代码\smart-countryside\Postman_miniprogram" --report_first --report
