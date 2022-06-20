@@ -7,6 +7,7 @@
     "pages/index/index",
     "pages/userSettings/userSettings/userSettings",
     "pages/userSettings/aboutUs/aboutUs",
+    "pages/userSettings/funIntroduction/funIntroduction",
     "pages/userSettings/help/help",
     "pages/userInfo/userInfo",
     "pages/editUserInfo/editUserInfo"

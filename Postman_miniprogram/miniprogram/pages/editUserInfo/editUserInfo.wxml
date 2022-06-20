@@ -37,7 +37,7 @@
             <view class="title">详细地址</view>
             <input model:value="{{detailAddress}}" bind:input="printInput" placeholder="请输入详细地址" maxlength="50"></input>
         </view>
-        <view class="padding flex flex-direction">
+        <view class="flex flex-direction margin-top-lg">
             <button class="cu-btn bg-blue lg" bindtap="handleEdit">提交</button>
         </view>
     </view>

@@ -6,6 +6,6 @@
     background-color: #fae3cb;
 }
 
-.button1 {
-    width: 100%;
+.bg {
+    background-color: #fae3cb;
 }

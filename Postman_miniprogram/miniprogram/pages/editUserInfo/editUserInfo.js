@@ -62,7 +62,17 @@ Page({
         detailAddress:this.data.detailAddress,
       },
       success:res => {
-        console.log(res)
+        wx.showLoading({
+          title:'提交中...'
+        })
+        if (res.errMsg === 'document.update:ok') {
+          wx.navigateTo({
+            url:'../userInfo/userInfo',
+            success:result => {
+              wx.hideLoading();
+            }
+          })
+        }
       }
     })
   },

@@ -21,8 +21,8 @@
 
     <van-cell-group inset title="操作">
         <navigator url="../editUserInfo/editUserInfo" >
-            <view class="margin-top-sm">
-                <van-button custom-style="width:100%" >编辑</van-button>
+            <view class="flex flex-direction">
+                <button class="cu-btn bg-green lg">编辑</button>
             </view>
         </navigator>
     </van-cell-group>

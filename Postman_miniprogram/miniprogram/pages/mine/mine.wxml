@@ -24,21 +24,19 @@
         </view>
     </view>
 
-    <van-cell-group inset title="功能">
-      <van-cell title="同城任务"
-                center
-                icon="sign"
-                is-link
-                link-type="navigateTo"
-                url="/pages/addTask/addTask"/>
-    </van-cell-group>
 
-    <van-cell-group inset title="系统">
-      <van-cell title="设置"
-                icon="setting-o"
-                center
-                is-link
-                link-type="navigateTo"
-                url="/pages/userSettings/userSettings/userSettings"/>
-    </van-cell-group>
+    <view class="cu-list menu card-menu">
+        <view class="cu-bar bg solid-bottom padding-left-xs">
+            <view class="action">
+                <text class="cuIcon-title text-orange"></text>系统
+            </view>
+        </view>
+        <view class="cu-item arrow">
+            <navigator class="content" hover-class="none" url="/pages/userSettings/userSettings/userSettings" open-type="navigate">
+                <text class="cuIcon-discoverfill text-orange"></text>
+                <text class="text-grey">设置</text>
+            </navigator>
+        </view>
+    </view>
+
 </view>
