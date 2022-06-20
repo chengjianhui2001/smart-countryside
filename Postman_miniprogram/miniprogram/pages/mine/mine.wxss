@@ -6,9 +6,13 @@
 }
 
 .right-icon {
+  width: 100rpx;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  font-size: 40rpx;
 }
+
 
 .user-card {
   display: flex;

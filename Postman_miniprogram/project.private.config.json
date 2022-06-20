@@ -1,6 +1,6 @@
 {
   "setting": {
-    "compileHotReLoad": false
+    "compileHotReLoad": true
   },
   "condition": {
     "miniprogram": {
@@ -36,6 +36,20 @@
         {
           "name": "帮助",
           "pathName": "pages/userSettings/help/help",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "账号信息",
+          "pathName": "pages/userInfo/userInfo",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "编辑用户信息",
+          "pathName": "pages/editUserInfo/editUserInfo",
           "query": "",
           "launchMode": "default",
           "scene": null

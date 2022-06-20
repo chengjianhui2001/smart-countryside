@@ -30,7 +30,7 @@ App({
     })
 
     this.globalData = {
-      //用户openid
+      //用户openi
       user_openid: null,
       //用户信息
       userInfo: null

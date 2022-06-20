@@ -1,52 +1,44 @@
 <!--pages/mine/mine.wxml-->
 <view id="mine" style="padding-top: 180rpx;">
-  <view class="padding text-center" >
-    <view class="padding-xl radius shadow bg-white user-card" style="border-radius: 15px;">
-        <view class="avatar-box">
-          <view>
-            <image class="cu-avatar round lg" src="{{userInfo.avatarUrl}}"></image>
-          </view>
-          <view class="info-box">
-            <view class="text-xl text-bold nickname">
-                <text wx:if="{{userInfo===null}}" class="text-black" bind:tap="login">登录</text>
-                <text wx:else class="text-black">{{userInfo.nickName}}</text>
+    <view class="padding text-center" >
+        <view class="padding-xl radius shadow bg-white user-card" style="border-radius: 15px;">
+            <view class="avatar-box">
+              <view>
+                <image class="cu-avatar round lg" src="{{userInfo.avatarUrl}}"></image>
+              </view>
+              <view class="info-box">
+                <view class="text-xl text-bold nickname">
+                    <text wx:if="{{userInfo===null}}" class="text-black" bind:tap="login">登录</text>
+                    <text wx:else class="text-black">{{userInfo.nickName}}</text>
+                </view>
+                <view class="text-xs padding phoneNumber">
+                    <text class="text-black">手机号：{{(userInfo.phoneNumber===undefined||userInfo.phoneNumber===null)?'暂无手机号':userInfo.phoneNumber}}</text>
+                </view>
+              </view>
             </view>
-            <view class="text-xs padding phoneNumber">
-                <text class="text-black">手机号：{{(userInfo.phoneNumber===undefined||userInfo.phoneNumber===null)?'暂无手机号':userInfo.phoneNumber}}</text>
-            </view>
-          </view>
-        </view>
-        <view class="right-icon">
-            <navigator url="../userInfo/userInfo">
-                <text class="cuIcon-right lg text-gray"></text>
+            <navigator url="../userInfo/userInfo" class="right-icon" hover-class="none">
+                <view>
+                    <text class="cuIcon-right lg text-gray"></text>
+                </view>
             </navigator>
         </view>
     </view>
-  </view>
-  <van-cell-group inset title="个人信息">
-      <van-cell title="账号信息"
-                center
-                icon="user-o"
-                is-link
-                link-type="navigateTo"
-                url="/pages/userInfo/userInfo"/>
-  </van-cell-group>
 
-  <van-cell-group inset title="功能">
+    <van-cell-group inset title="功能">
       <van-cell title="同城任务"
                 center
                 icon="sign"
                 is-link
                 link-type="navigateTo"
                 url="/pages/addTask/addTask"/>
-  </van-cell-group>
+    </van-cell-group>
 
-  <van-cell-group inset title="系统">
+    <van-cell-group inset title="系统">
       <van-cell title="设置"
                 icon="setting-o"
                 center
                 is-link
                 link-type="navigateTo"
                 url="/pages/userSettings/userSettings/userSettings"/>
-  </van-cell-group>
+    </van-cell-group>
 </view>
