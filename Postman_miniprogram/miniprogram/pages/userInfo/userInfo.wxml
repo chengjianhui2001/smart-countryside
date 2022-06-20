@@ -1,0 +1,11 @@
+<!--pages/userInfo/userInfo.wxml-->
+<view id="userInfo">
+    <van-cell-group inset title="账号信息">
+        <van-cell title="用户名" value="{{userInfo.nickName}}" />
+        <van-cell title="性别" value="{{userInfo.gender===0?'未知':userInfo.gender===1?'男':'女'}}" />
+        <van-cell title="手机号" value="{{userInfo.phoneNumber===undefined||userInfo.phoneNumber===null?'未知':userInfo.phoneNumber}}" />
+        <van-cell title="地区" value="{{userInfo.city===''||userInfo.province===''?'未知':userInfo.province+' '+userInfo.city}}" />
+        <van-cell title="详细地址" value="{{userInfo.detailAddress===undefined||userInfo.detailAddress===null?'未知':userInfo.detailAddress}}" />
+        <van-cell title="实名认证" value="{{userInfo.idCard===undefined||userInfo.idCard===null?'暂未实名':'已实名'}}" />
+    </van-cell-group>
+</view>

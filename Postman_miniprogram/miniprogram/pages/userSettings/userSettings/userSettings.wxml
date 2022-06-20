@@ -1,0 +1,25 @@
+<!--pages/userSettings/userSettings.wxml-->
+<view id="settings">
+    <van-cell-group inset title="内容">
+        <van-cell title="关于我们"
+                  icon="friends-o"
+                  size="large"
+                  is-link link-type="navigateTo"
+                  url="/pages/userSettings/aboutUs/aboutUs"/>
+        <van-cell title="联系客服"
+                  icon="service-o"
+                  size="large"
+                  is-link link-type="navigateTo"
+                  url="/pages/help/help"/>
+        <van-cell title="帮助"
+                  icon="question-o"
+                  size="large"
+                  is-link link-type="navigateTo"
+                  url="/pages/userSettings/help/help"/>
+    </van-cell-group>
+
+    <van-cell-group inset title="操作">
+        <van-button custom-style="width:100%" bind:tap="exit">退出登录</van-button>
+    </van-cell-group>
+
+</view>

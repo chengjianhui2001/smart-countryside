@@ -1,0 +1,6 @@
+/* pages/userInfo/userInfo.wxss */
+#userInfo {
+    width: 100vw;
+    height: 100vh;
+    background-color: #fae3cb;
+}

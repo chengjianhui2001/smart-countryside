@@ -1,0 +1,11 @@
+/* pages/userSettings/userSettings.wxss */
+
+#settings{
+    width: 100vw;
+    height: 100vh;
+    background-color: #fae3cb;
+}
+
+.button1 {
+    width: 100%;
+}

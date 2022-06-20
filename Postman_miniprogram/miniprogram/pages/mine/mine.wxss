@@ -4,3 +4,27 @@
   width: 100vw;
   background-color: #fae3cb;
 }
+
+.right-icon {
+  display: flex;
+  align-items: center;
+}
+
+.user-card {
+  display: flex;
+  justify-content: space-between;
+}
+
+.avatar-box {
+  display: flex;
+}
+
+.phoneNumber {
+  padding-top: 15rpx;
+  padding-bottom: 0;
+}
+
+.nickname {
+  text-align: left;
+  padding-left: 30rpx;
+}

@@ -25,6 +25,20 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "设置",
+          "pathName": "pages/userSettings/userSettings/userSettings",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "帮助",
+          "pathName": "pages/userSettings/help/help",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

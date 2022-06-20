@@ -9,11 +9,31 @@ App({
         //   env 参数决定接下来小程序发起的云开发调用（wx.cloud.xxx）会默认请求到哪个云环境的资源
         //   此处请填入环境 ID, 环境 ID 可打开云控制台查看
         //   如不填则使用默认环境（第一个创建的环境）
-        // env: 'my-env-id',
+        env: 'cloud1-5g1oimlb11d4eb78',
         traceUser: true,
       });
     }
 
-    this.globalData = {};
+    wx.cloud.callFunction({
+      name: 'get_openId',
+      success: res => {
+        //获取用户openid
+        this.globalData.user_openid = res.result.openid
+        wx.cloud.database().collection('user').where({
+          _openid:res.result.openid
+        }).get({
+          success:res => {
+            this.globalData.userInfo = res.data[0]
+          }
+        })
+      }
+    })
+
+    this.globalData = {
+      //用户openid
+      user_openid: null,
+      //用户信息
+      userInfo: null
+    };
   }
 });
