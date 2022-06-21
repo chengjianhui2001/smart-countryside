@@ -1,29 +1,63 @@
 <!--pages/userInfo/userInfo.wxml-->
 <view id="userInfo">
-    <van-cell-group inset title="账号信息">
-        <van-cell title="用户名"
-                  value="{{userInfo.nickName}}"
-        />
-        <van-cell title="性别"
-                  value="{{userInfo.gender===0?'未知':userInfo.gender===1?'男':'女'}}"
-        />
-        <van-cell title="手机号"
-                  value="{{userInfo.phoneNumber===undefined||userInfo.phoneNumber===null?'未知':userInfo.phoneNumber}}"
-        />
-        <van-cell title="地区"
-                  value="{{userInfo.city===''||userInfo.province===''?'未知':userInfo.province+' '+userInfo.city}}"
-        />
-        <van-cell title="详细地址"
-                  value="{{userInfo.detailAddress===undefined||userInfo.detailAddress===null?'未知':userInfo.detailAddress}}"
-        />
+    <view class="cu-bar bg solid-bottom padding-left-xs">
+        <view class="action">
+            <text class="cuIcon-title text-orange"></text>信息
+        </view>
+    </view>
+    <view class="cu-list menu sm-border border card-menu">
+        <view class="cu-item">
+            <view class="content">
+                <text class="text-black">昵称</text>
+            </view>
+            <view class="action">
+                <text class="text-grey text-lg">{{userInfo.nickName}}</text>
+            </view>
+        </view>
+        <view class="cu-item">
+            <view class="content">
+                <text class="text-black">性别</text>
+            </view>
+            <view class="action">
+                <text class="text-grey text-lg">{{userInfo.gender===0?'未知':userInfo.gender===1?'男':'女'}}</text>
+            </view>
+        </view>
+        <view class="cu-item">
+            <view class="content">
+                <text class="text-black">手机号</text>
+            </view>
+            <view class="action">
+                <text class="text-grey text-lg">{{userInfo.phoneNumber===undefined||userInfo.phoneNumber===null?'未知':userInfo.phoneNumber}}</text>
+            </view>
+        </view>
+        <view class="cu-item">
+            <view class="content">
+                <text class="text-black">地区</text>
+            </view>
+            <view class="action">
+                <text class="text-grey text-lg">{{userInfo.city===''||userInfo.province===''?'未知':userInfo.province+' '+userInfo.city+' '+userInfo.district}}</text>
+            </view>
+        </view>
+        <view class="cu-item">
+            <view class="content">
+                <text class="text-black">详细地址</text>
+            </view>
+            <view class="action">
+                <text class="text-grey text-lg">{{userInfo.detailAddress===undefined||userInfo.detailAddress===null?'未知':userInfo.detailAddress}}</text>
+            </view>
+        </view>
+    </view>
 
-    </van-cell-group>
-
-    <van-cell-group inset title="操作">
+    <view class="cu-bar bg solid-bottom padding-left-xs">
+        <view class="action">
+            <text class="cuIcon-title text-orange"></text>操作
+        </view>
+    </view>
+    <view class="cu-list menu card-menu">
         <navigator url="../editUserInfo/editUserInfo" >
             <view class="flex flex-direction">
                 <button class="cu-btn bg-green lg">编辑</button>
             </view>
         </navigator>
-    </van-cell-group>
+    </view>
 </view>
