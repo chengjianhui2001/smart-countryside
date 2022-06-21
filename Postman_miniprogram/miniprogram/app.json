@@ -10,7 +10,8 @@
     "pages/userSettings/funIntroduction/funIntroduction",
     "pages/userSettings/help/help",
     "pages/userInfo/userInfo",
-    "pages/editUserInfo/editUserInfo"
+    "pages/editUserInfo/editUserInfo",
+    "pages/addNews/addNews"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -21,25 +22,7 @@
   },
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
-    "van-grid": "@vant/weapp/grid/index",
-    "van-grid-item": "@vant/weapp/grid-item/index",
-    "cu-custom": "/colorui/components/cu-custom",
-    "van-button": "@vant/weapp/button/index",
-    "van-cell-group": "@vant/weapp/cell-group/index",
-    "van-field": "@vant/weapp/field/index",
-    "van-picker": "@vant/weapp/picker/index",
-    "van-cell": "@vant/weapp/cell/index",
-    "van-radio-group": "@vant/weapp/radio-group/index",
-    "van-icon": "@vant/weapp/icon/index",
-    "van-image": "@vant/weapp/image/index",
-    "van-toast": "@vant/weapp/toast/index",
-    "van-sidebar": "@vant/weapp/sidebar/index",
-    "van-sidebar-item": "@vant/weapp/sidebar-item/index",
-    "van-collapse": "@vant/weapp/collapse/index",
-    "van-collapse-item": "@vant/weapp/collapse-item/index",
-    "van-notify": "@vant/weapp/notify/index",
-    "van-swipe-cell": "@vant/weapp/swipe-cell/index",
-    "van-picker": "@vant/weapp/picker/index"
+    "cu-custom": "/colorui/components/cu-custom"
   },
   "tabBar": {
     "list": [

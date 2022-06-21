@@ -1,4 +1,5 @@
-<!--pages/login/login.wxml-->
+<!--
+pages/login/login.wxml
 <view class="login">
     <view class="head">
         <view class="title animated flipInY">乡村快讯</view>
@@ -32,3 +33,4 @@
     <van-toast id="van-toast" />
 
 </view>
+-->

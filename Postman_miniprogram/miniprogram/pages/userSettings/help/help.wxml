@@ -1,4 +1,5 @@
-<!--pages/userSettings/help/help.wxml-->
+<!--
+pages/userSettings/help/help.wxml
 <view id="help">
     <van-collapse
             value="{{ activeNames }}"
@@ -30,4 +31,4 @@
     </van-collapse>
 
     <van-notify id="van-notify" />
-</view>
+</view>-->

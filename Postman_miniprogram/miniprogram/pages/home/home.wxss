@@ -3,3 +3,9 @@
   height: 100vh;
   width: 100vw;
 }
+
+#turnRound {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 120px;
+}

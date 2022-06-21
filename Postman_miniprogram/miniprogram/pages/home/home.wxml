@@ -1,39 +1,67 @@
 <!--pages/home/home.wxml-->
 <view id="home">
-    <view class="cu-bar">
-        <view class="action">
-            <text class="cuIcon-title text-pink"></text>近期成果
+    <view class="cu-bar bg-white search fixed">
+        <view class="search-form round">
+            <text class="cuIcon-search"></text>
+            <input type="text" placeholder="输入搜索的关键词" confirm-type="search"></input>
         </view>
+        <view class="action">
+            <button class="cu-btn bg-gradual-green shadow-blur round">搜索</button>
+        </view>
+
     </view>
-    <swiper class="card-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
-        <swiper-item wx:for="{{swiperList}}" wx:key="id" class="{{cardCur=== index?'cur':''}}">
-            <view class="swiper-item">
-                <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type ==='image'}}"></image>
-                <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type ==='video'}}"></video>
+    <view style="width:100vw;height:100rpx"></view>
+    <view class="cu-bar bg-white solid-bottom">
+        <view class='action'>
+            <text class='cuIcon-titles text-orange '></text>新闻热点
+        </view>
+        <view class="flex">
+            <view class='action flex align-center'>
+                <view class="text-sm margin-right-xs">{{isCard?'文章':'卡片'}}</view>
+                <switch class='xs' checked='{{isCard}}' bindchange='isCard'></switch>
             </view>
-        </swiper-item>
-    </swiper>
-    <view class="cu-bar solid-bottom">
-        <view class="action">
-            <text class="cuIcon-title text-orange "></text> 要闻
+            <view class="action text-gray add-action margin-left-xs">
+                <navigator url="../addNews/addNews">
+                    <button class="cu-btn bg-green shadow" id="turnRound">
+                        <text class="cuIcon-add  text-white"></text>
+                    </button>
+                </navigator>
+            </view>
         </view>
     </view>
-    <view class="cu-list menu-avatar">
-        <view class="cu-item" wx:for="{{taskList}}" wx:key="id" bind:tap="getDetails" data-id="{{item.id}}">
-            <view class="cu-avatar round lg" style="background-image:url(/images/pushTask/task3.png);"></view>
-            <view class="content">
-                <view class="text-grey">任务名称:{{item.title}}</view>
-                <view class="text-gray text-sm flex">
-                    <text class="text-cut">任务内容:{{item.detail}}
-                        任务价格:{{item.price}}</text>
+
+    <block wx:for="{{20}}" wx:key="id">
+        <view class="cu-card article {{isCard?'no-card':''}}">
+            <view class="cu-item shadow">
+                <view class="flex justify-between margin-top">
+                    <view class="flex">
+                        <view class="cu-avatar round  margin-left" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);">
+                            <view class="cu-tag badge cuIcon-female bg-pink"></view>
+                        </view>
+                        <view class="flex-direction content justify-around">
+                            <view class="text-sm">{{tableData.username}}</view>
+                            <view class="text-gray text-xs">{{tableData.createTime}}</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="title">
+                    <view class="text-cut">{{tableData.title}}</view>
+                </view>
+                <view class="content">
+                    <image src="https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg" mode="aspectFill"></image>
+                    <view class="desc">
+                        <view class="text-content">{{tableData.content}}</view>
+                        <view>
+                            <view class="cu-tag bg-red light sm round">饮食</view>
+                            <view class="cu-tag bg-green light sm round">时事热点</view>
+                        </view>
+                    </view>
                 </view>
             </view>
-            <view class="action">
-                <view class="text-grey text-xs">发布时间:{{item.startTime}}</view>
-                <view class="cu-tag round bg-grey sm">{{item.taskState}}</view>
-            </view>
+
         </view>
-    </view>
+    </block>
+
 </view>
 
 

@@ -34,7 +34,7 @@
         <view class="cu-item arrow">
             <navigator class="content" hover-class="none" url="/pages/userSettings/userSettings/userSettings" open-type="navigate">
                 <text class="cuIcon-discoverfill text-orange"></text>
-                <text class="text-grey">设置</text>
+                <text class="text-gr  ey">设置</text>
             </navigator>
         </view>
     </view>
