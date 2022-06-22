@@ -12,7 +12,7 @@
                     <text wx:else class="text-black">{{userInfo.nickName}}</text>
                 </view>
                 <view class="text-xs padding phoneNumber">
-                    <text class="text-black">手机号：{{(userInfo.phoneNumber===undefined||userInfo.phoneNumber===null)?'暂无手机号':userInfo.phoneNumber}}</text>
+                    <text class="text-black">手机号：{{(userInfo.phoneNumber===''||userInfo.phoneNumber===null ||userInfo.phoneNumber===undefined)?'暂无手机号':userInfo.phoneNumber}}</text>
                 </view>
               </view>
             </view>
@@ -28,10 +28,24 @@
     <view class="cu-list menu card-menu">
         <view class="cu-bar bg solid-bottom padding-left-xs">
             <view class="action">
+                <text class="cuIcon-title text-orange"></text>服务
+            </view>
+        </view>
+        <view class="cu-item arrow br-r">
+            <navigator class="content" hover-class="none" url="/pages/contentMg/contentMg" open-type="navigate">
+                <text class="cuIcon-discoverfill text-orange"></text>
+                <text class="text-gr  ey">内容管理</text>
+            </navigator>
+        </view>
+    </view>
+
+    <view class="cu-list menu card-menu">
+        <view class="cu-bar bg solid-bottom padding-left-xs">
+            <view class="action">
                 <text class="cuIcon-title text-orange"></text>系统
             </view>
         </view>
-        <view class="cu-item arrow">
+        <view class="cu-item arrow br-r">
             <navigator class="content" hover-class="none" url="/pages/userSettings/userSettings/userSettings" open-type="navigate">
                 <text class="cuIcon-discoverfill text-orange"></text>
                 <text class="text-gr  ey">设置</text>

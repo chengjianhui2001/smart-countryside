@@ -1,0 +1,23 @@
+<view id="main">
+    <swiper class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+        <swiper-item wx:for="{{newsInfo.fileIds}}" wx:key="id">
+            <image src="{{item}}" mode="aspectFill"></image>
+        </swiper-item>
+    </swiper>
+    <view class="padding-xs flex flex-direction justify-center">
+        <view class="flex-sub text-center">
+            <view class="text-xl padding">
+                <text class="text-black text-bold ">{{newsInfo.title}}</text>
+            </view>
+        </view>
+        <view class="flex flex-sub justify-center padding-xs ">
+            <view class="text-df">发布人：{{newsInfo.userInfo[0].nickName}}</view>
+        </view>
+        <view class="flex flex-sub justify-center">
+            <view class="text-df">发布时间：{{newsInfo.createDate}}</view>
+        </view>
+        <view class="flex flex-sub justify-center  margin-top padding margin-left margin-right bg-brown light" style="line-height:50rpx;border-radius:20px">
+            <view class="text-df text-black">{{newsInfo.content}}</view>
+        </view>
+    </view>
+</view>

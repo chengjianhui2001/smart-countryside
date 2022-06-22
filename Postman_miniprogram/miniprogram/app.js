@@ -30,10 +30,23 @@ App({
     })
 
     this.globalData = {
-      //用户openi
+      //用户openid
       user_openid: null,
       //用户信息
-      userInfo: null
+      userInfo: {
+        _id:null,
+        _openid:null,
+        avatarUrl:null,
+        country:'',
+        province:'',
+        city:'',
+        district:'',
+        detailAddress:null,
+        nickName:null,
+        gender:null,
+        language:null,
+        phoneNumber:null
+      }
     };
   }
 });

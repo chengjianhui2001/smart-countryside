@@ -7,14 +7,14 @@
         </view>
         <view class="cu-form-group align-start">
             <view class="title">内容</view>
-            <textarea model:value="{{content}}" maxlength="200" placeholder="请输入新闻内容" bind:input="handledContentInput"></textarea>
+            <textarea model:value="{{content}}" placeholder="请输入新闻内容" bind:input="handledContentInput"></textarea>
         </view>
         <view class="cu-form-group margin-top">
             <view class="title">标签</view>
         </view>
         <view class="cu-form-group">
             <checkbox-group bindchange="checkboxChange" class="flex flex-wrap justify-start">
-                <block wx:for="{{items}}" wx:key="{{item.value}}">
+                <block wx:for="{{items}}" wx:key="id">
                     <label class="flex margin-bottom-xs margin-right">
                         <checkbox class="round margin-right-xs blue" value="{{item.value}}"></checkbox>
                         <view>{{item.name}}</view>

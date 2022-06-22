@@ -10,22 +10,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-    nickname:null,
+    nickName:null,
     gender:null,
+    checked:null,
     phoneNumber:null,
     province:null,
     city:null,
+    district:null,
     detailAddress:null,
-    picker: ['男','女'],
-    region: ['', '', ''],
+    region: ['北京市', '北京市', '东城区'],
   },
 
   /**
    * 性别选择器*/
-  PickerChange:function(e) {
-    this.setData({
-      gender: e.detail.value
-    })
+  SwitchChange:function(e) {
+    if (!e.detail.value){
+      this.setData({
+        gender:2,
+        checked:e.detail.value
+      })
+    }else {
+      this.setData({
+        gender:1,
+        checked:e.detail.value
+      })
+    }
   },
 
   /**
@@ -37,28 +46,14 @@ Page({
     })
   },
 
-  /*
-  * 监听picker变化
-  * */
-  onChange(event) {
-    const { picker, value, index } = event.detail;
-  },
-
-  /**
-   * 获取用户手机号
-   * */
-  getPhoneNumber(e){
-    console.log(e.detail.code)
-  },
-
 
   /**
    * 修改用户信息*/
   handleEdit(){
     user.doc(app.globalData.userInfo._id).update({
       data: {
-        nickName:this.data.nickname,
-        gender:parseInt(this.data.gender)+1,
+        nickName:this.data.nickName,
+        gender:parseInt(this.data.gender),
         phoneNumber:this.data.phoneNumber,
         province:this.data.region[0],
         city:this.data.region[1],
@@ -70,8 +65,14 @@ Page({
           title:'提交中...'
         })
         if (res.errMsg === 'document.update:ok') {
-          wx.navigateTo({
-            url:'../userInfo/userInfo',
+          app.globalData.userInfo.nickName =this.data.nickName
+          app.globalData.userInfo.gender = parseInt(this.data.gender)
+          app.globalData.userInfo.phoneNumber = this.data.phoneNumber
+          app.globalData.userInfo.province = this.data.region[0]
+          app.globalData.userInfo.city = this.data.region[1]
+          app.globalData.userInfo.district = this.data.region[2]
+          app.globalData.userInfo.detailAddress = this.data.detailAddress
+          wx.navigateBack({
             success:result => {
               wx.hideLoading();
             }
@@ -88,14 +89,36 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() {
+  onLoad() {
     this.setData({
-      nickname:app.globalData.userInfo.nickName,
-      gender:parseInt(app.globalData.userInfo.gender)-1,
+      nickName:app.globalData.userInfo.nickName,
       phoneNumber:app.globalData.userInfo.phoneNumber,
-      region:[app.globalData.userInfo.province,app.globalData.userInfo.city, app.globalData.userInfo.district,],
       detailAddress:app.globalData.userInfo.detailAddress
     })
+    if (app.globalData.userInfo.province !=='' && app.globalData.userInfo.city !=='' && app.globalData.userInfo.district !==''){
+      this.setData({
+        region:[app.globalData.userInfo.province,app.globalData.userInfo.city,app.globalData.userInfo.district]
+      })
+    }
+
+    if (app.globalData.userInfo.gender === 0){
+      this.setData({
+        gender:2,
+        checked:false
+      })
+    }else {
+      if (app.globalData.userInfo.gender===1){
+        this.setData({
+          gender:1,
+          checked:true,
+        })
+      }else if (app.globalData.userInfo.gender===2) {
+        this.setData({
+          gender:2,
+          checked: false,
+        })
+      }
+    }
   },
 
 })

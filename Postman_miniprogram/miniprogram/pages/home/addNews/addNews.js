@@ -1,4 +1,5 @@
 // pages/addNews/addNews.js
+const app = getApp()
 const db = wx.cloud.database()
 const news = db.collection('news')
 
@@ -10,17 +11,18 @@ Page({
   data: {
     title:null,
     content:null,
-    tags:null,
+    tags:[],
     items: [
-      {value: 0, name: '时事热点'},
-      {value: 1, name: '饮食文化'},
-      {value: 2, name: '生活文化'},
-      {value: 3, name: '生活常识'},
-      {value: 4, name: '国际形势'},
-      {value: 5, name: '乡镇发展'}
+      {value: '时事热点', name: '时事热点'},
+      {value: '饮食文化', name: '饮食文化'},
+      {value: '生活文化', name: '生活文化'},
+      {value: '生活常识', name: '生活常识'},
+      {value: '国际形势', name: '国际形势'},
+      {value: '乡镇发展', name: '乡镇发展'}
     ],
     imgList: [],
-    fileIds:[]
+    fileIds:[],
+    isPost:false
   },
 
   /**
@@ -46,6 +48,9 @@ Page({
       sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album'], //从相册选择
       success: (res) => {
+        wx.showLoading({
+          title:'上传中...'
+        })
         if (this.data.imgList.length !== 0) {
           this.setData({
             imgList: this.data.imgList.concat(res.tempFilePaths)
@@ -63,6 +68,7 @@ Page({
             this.handleUpload(fileName,item,index)
           })
         }
+        wx.hideLoading()
       }
     });
   },
@@ -88,15 +94,14 @@ Page({
       confirmText: '删除',
       success: res => {
         if (res.confirm) {
-          console.log(e.currentTarget.dataset.index)
           wx.cloud.deleteFile(
               {
                 fileList:[this.data.fileIds[e.currentTarget.dataset.index]],
                 success(){
-                  wx.showToast({title: '删除成功',})
+                  console.log("删除成功")
                 },
                 fail(){
-                  wx.showToast({title: '删除失败',})
+                  console.log("删除失败")
                 },
               }
           );
@@ -118,7 +123,6 @@ Page({
      cloudPath:`newsImage/${fileName}.jpg`,
      filePath:filePath,
    }).then(res=>{
-     console.log('当前对象为：',index,'值为',res.fileID)
      this.setData({
        [`fileIds[${index}]`]:res.fileID
      })
@@ -134,7 +138,7 @@ Page({
     wx.showLoading({
       title:'发布中',
     })
-    if (this.data.title===null||this.data.title===''||this.data.content===null||this.data.content===''||this.data.tags===null||this.data.fileIds===[]){
+    if (this.data.title===null||this.data.title===''||this.data.content===null||this.data.content===''||this.data.tags.length===0||this.data.fileIds.length===0){
       wx.showToast({
         title:'请将内容填写完整后发布',
         icon:"none",
@@ -144,12 +148,18 @@ Page({
       setTimeout(()=>{
         news.add({
           data: {
+            user_id:app.globalData.userInfo._id,
             title: this.data.title,
             content: this.data.content,
             tags: this.data.tags,
-            fileIds: this.data.fileIds
+            fileIds: this.data.fileIds,
+            createDate:this.TimeFormat(new Date()),
+            createTime:new Date()
           },
           success: res => {
+            this.setData({
+              isPost:true
+            })
             wx.hideLoading({
               success:res1 => {
                 console.log(res)
@@ -172,5 +182,35 @@ Page({
       },1000)
 
     }
-  }
+  },
+
+  onUnload:function (){
+    if (this.data.isPost){
+      console.log("数据提交成功")
+    }else {
+      wx.cloud.deleteFile(
+          {
+            fileList:this.data.fileIds,
+            success:res => {
+              console.log('清除成功',res)
+            },
+            fail:res=>{
+              console.log('清除失败',res)
+            },
+          }
+      )
+    }
+  },
+
+  TimeFormat(time){
+    let date = new Date(time);
+    let YY = date.getFullYear() + '-';
+    let MM = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+    let DD = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate());
+    let hh = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
+    let mm = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
+    let ss = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+    return YY + MM + DD + " " + hh + mm + ss;
+  },
+
 })

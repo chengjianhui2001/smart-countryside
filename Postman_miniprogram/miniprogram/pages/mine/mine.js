@@ -20,8 +20,6 @@ Page({
       desc: '用于登录智慧乡镇',
       success: res => {
         console.log(res.userInfo)
-        //设置全局用户信息
-        app.globalData.userInfo = res.userInfo
         //设置局部用户信息
         this.setData({
           userInfo: res.userInfo
@@ -38,12 +36,14 @@ Page({
                 data: this.data.userInfo,
               }).then(res=>{
                 console.log(res);
+                app.globalData.userInfo = this.data.userInfo
               })
             } else {
               //数据库中已经存在该openID
               this.setData({
                 userInfo: res.data[0]
               })
+              app.globalData.userInfo = res.data[0]
             }
           }
         })

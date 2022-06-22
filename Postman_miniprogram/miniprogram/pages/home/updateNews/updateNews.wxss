@@ -1,0 +1,9 @@
+/* pages/addNews/addNews.wxss */
+#main {
+    display: flex;
+    justify-content: center;
+}
+
+.form {
+    width: 90%;
+}
