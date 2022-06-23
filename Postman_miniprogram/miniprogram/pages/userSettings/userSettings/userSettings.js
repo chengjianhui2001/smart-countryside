@@ -1,14 +1,10 @@
 // pages/userSettings/userSettings.js
-const app = getApp()
-
 Page({
 
   /**
    * 页面的初始数据
    */
-  data: {
-    userInfo:null,
-  },
+  data: {},
 
   exit(){
     wx.showModal({
@@ -16,7 +12,7 @@ Page({
       content:'确定要退出吗？',
       success:res=>{
         if (res.confirm){
-          app.globalData.userInfo = null
+          wx.removeStorageSync('userInfo')
           wx.switchTab({
             url:'/pages/mine/mine'
           })
@@ -24,16 +20,6 @@ Page({
       }
     })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-    this.setData({
-      userInfo:app.globalData.userInfo
-    })
-  },
-
 
   /**
    * 客服消息

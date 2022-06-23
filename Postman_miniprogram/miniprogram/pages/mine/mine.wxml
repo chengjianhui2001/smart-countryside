@@ -3,18 +3,28 @@
     <view class="padding text-center" >
         <view class="padding-xl radius shadow bg-white user-card" style="border-radius: 15px;">
             <view class="avatar-box">
-              <view>
-                <image class="cu-avatar round lg" src="{{userInfo.avatarUrl}}"></image>
-              </view>
-              <view class="info-box">
-                <view class="text-xl text-bold nickname">
-                    <text wx:if="{{userInfo===null}}" class="text-black" bind:tap="login">登录</text>
-                    <text wx:else class="text-black">{{userInfo.nickName}}</text>
+                <view>
+                    <image class="cu-avatar round lg" src="{{userInfo.avatarUrl}}"></image>
                 </view>
-                <view class="text-xs padding phoneNumber">
-                    <text class="text-black">手机号：{{(userInfo.phoneNumber===''||userInfo.phoneNumber===null ||userInfo.phoneNumber===undefined)?'暂无手机号':userInfo.phoneNumber}}</text>
+
+                <view class="info-box" wx:if="{{userInfo===null}}" bindtap="login">
+                    <view class="text-xl text-bold nickname">
+                        <text class="text-black" bind:tap="login">登录</text>
+                    </view>
+                    <view class="text-xs padding phoneNumber">
+                        <text class="text-black">手机号：暂无手机号</text>
+                    </view>
                 </view>
-              </view>
+                <view class="info-box" wx:else>
+                    <view class="text-xl text-bold nickname">
+                        <text class="text-black">{{userInfo.nickName}}</text>
+                    </view>
+                    <view class="text-xs padding phoneNumber">
+                        <text class="text-black">手机号：{{(userInfo.phoneNumber===''||userInfo.phoneNumber===null ||userInfo.phoneNumber===undefined)?'暂无手机号':userInfo.phoneNumber}}</text>
+                    </view>
+                </view>
+
+
             </view>
             <navigator url="../userInfo/userInfo" class="right-icon" hover-class="none">
                 <view>

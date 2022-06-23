@@ -1,7 +1,5 @@
 // pages/editUserInfo/editUserInfo.js
-const app = getApp()
 const db = wx.cloud.database()
-const _ = db.command
 const user = db.collection('user')
 
 Page({
@@ -11,7 +9,7 @@ Page({
    */
   data: {
     nickName:null,
-    gender:null,
+    gender:0,
     checked:null,
     phoneNumber:null,
     province:null,
@@ -21,8 +19,7 @@ Page({
     region: ['北京市', '北京市', '东城区'],
   },
 
-  /**
-   * 性别选择器*/
+  //性别选择器
   SwitchChange:function(e) {
     if (!e.detail.value){
       this.setData({
@@ -36,21 +33,72 @@ Page({
       })
     }
   },
-
-  /**
-   * 地址选择器
-   * */
+  //地址选择器
   RegionChange: function(e) {
     this.setData({
       region: e.detail.value
     })
   },
+  //input框输入监听
+  printInput:function (e){},
 
+  //生命周期函数--监听页面显示
+  onShow() {
+    try{
+      let userInfo = wx.getStorageSync('userInfo')
+      if (userInfo){
+        this.setData({
+          userInfo:userInfo
+        })
+        this.setData({
+          nickName:userInfo.nickName
+        })
+        if (userInfo.hasOwnProperty('phoneNumber')){
+          this.setData({
+            phoneNumber:userInfo.phoneNumber
+          })
+        }
+        if (userInfo.hasOwnProperty('detailAddress')){
+          this.setData({
+            detailAddress:userInfo.detailAddress
+          })
+        }
+        if (userInfo.gender === 0){
+          this.setData({
+            gender:2,
+            checked:false
+          })
+        }else {
+          if (userInfo.gender===1){
+            this.setData({
+              gender:1,
+              checked:true,
+            })
+          }else if (userInfo.gender===2) {
+            this.setData({
+              gender:2,
+              checked: false,
+            })
+          }
+        }
+        if (userInfo.province!=="" && userInfo.city!=="" && userInfo.hasOwnProperty('district')){
+          this.setData({
+            region:[userInfo.province,userInfo.city,userInfo.district]
+          })
+        }
+      }
+    }catch (e) {
+      console.log(e)
+    }
+  },
 
-  /**
-   * 修改用户信息*/
+  //修改用户信息
   handleEdit(){
-    user.doc(app.globalData.userInfo._id).update({
+    let _id = wx.getStorageSync('userInfo')._id
+    wx.showLoading({
+      title:'提交中...'
+    })
+    user.doc(_id).update({
       data: {
         nickName:this.data.nickName,
         gender:parseInt(this.data.gender),
@@ -61,64 +109,22 @@ Page({
         detailAddress:this.data.detailAddress,
       },
       success:res => {
-        wx.showLoading({
-          title:'提交中...'
-        })
         if (res.errMsg === 'document.update:ok') {
-          app.globalData.userInfo.nickName =this.data.nickName
-          app.globalData.userInfo.gender = parseInt(this.data.gender)
-          app.globalData.userInfo.phoneNumber = this.data.phoneNumber
-          app.globalData.userInfo.province = this.data.region[0]
-          app.globalData.userInfo.city = this.data.region[1]
-          app.globalData.userInfo.district = this.data.region[2]
-          app.globalData.userInfo.detailAddress = this.data.detailAddress
-          wx.navigateBack({
-            success:result => {
-              wx.hideLoading();
+          user.doc(_id).get({
+            success: res => {
+              console.log('提交编辑成功后根据用户id查询编辑后的用户信息',res)
+              try {
+                wx.setStorageSync('userInfo', res.data)
+                wx.navigateBack({
+                  success:result => {
+                    wx.hideLoading();
+                  }
+                })
+              } catch (e) { console.log(e) }
             }
           })
         }
       }
     })
-  },
-
-  /**
-   * input框输入监听*/
-  printInput:function (e){},
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onLoad() {
-    this.setData({
-      nickName:app.globalData.userInfo.nickName,
-      phoneNumber:app.globalData.userInfo.phoneNumber,
-      detailAddress:app.globalData.userInfo.detailAddress
-    })
-    if (app.globalData.userInfo.province !=='' && app.globalData.userInfo.city !=='' && app.globalData.userInfo.district !==''){
-      this.setData({
-        region:[app.globalData.userInfo.province,app.globalData.userInfo.city,app.globalData.userInfo.district]
-      })
-    }
-
-    if (app.globalData.userInfo.gender === 0){
-      this.setData({
-        gender:2,
-        checked:false
-      })
-    }else {
-      if (app.globalData.userInfo.gender===1){
-        this.setData({
-          gender:1,
-          checked:true,
-        })
-      }else if (app.globalData.userInfo.gender===2) {
-        this.setData({
-          gender:2,
-          checked: false,
-        })
-      }
-    }
-  },
-
+  }
 })

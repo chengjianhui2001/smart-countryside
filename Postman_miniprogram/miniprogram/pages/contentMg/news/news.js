@@ -1,5 +1,4 @@
 // pages/contentMg/news/news.js
-const app = getApp()
 const db = wx.cloud.database()
 const news = db.collection('news')
 
@@ -16,6 +15,7 @@ Page({
   },
 
   getData:function(callback){
+    let user_id = wx.getStorageSync('userInfo')._id
     if (!callback){
       callback = res=>{}
     }
@@ -23,7 +23,7 @@ Page({
       title:'数据加载中'
     })
     news.where({
-      user_id:app.globalData.userInfo._id
+      user_id:user_id
     })
     .orderBy('createTime', 'desc')
     .get({
@@ -44,20 +44,26 @@ Page({
       }
     })
   },
-
+  //进入页面渲染
   onShow:function() {
-    this.getData()
+    try {
+      let userInfo = wx.getStorageSync('userInfo')
+      if (userInfo){
+        this.getData()
+        this.setData({
+          avatarUrl:userInfo.avatarUrl,
+          nickName:userInfo.nickName,
+          gender:userInfo.gender
+        })
+      }
+    }catch (e) {
+      wx.showToast({
+        title:'获取用户数据失败',
+        icon:"error"
+      })
+      console.log(e)
+    }
   },
-
-  onLoad:function (){
-    this.getData()
-    this.setData({
-      avatarUrl:app.globalData.userInfo.avatarUrl,
-      nickName:app.globalData.userInfo.nickName,
-      gender:app.globalData.userInfo.gender
-    })
-  },
-
   //删除我的新闻
   handleDelete(e){
     console.log(e)
@@ -68,11 +74,15 @@ Page({
       confirmText:'确定删除',
       success:res=>{
         if (res.confirm){
+          wx.showLoading({
+            title:'删除中...'
+          })
           news.doc(e.currentTarget.dataset.id).remove({
             success: res => {
               wx.cloud.deleteFile({
                 fileList:e.currentTarget.dataset.filelist,
                 success:res=>{
+                  wx.hideLoading()
                   this.getData()
                 },
                 fail:res=>{

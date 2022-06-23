@@ -1,13 +1,9 @@
 // pages/addNews/addNews.js
-const app = getApp()
 const db = wx.cloud.database()
 const news = db.collection('news')
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
+  //页面的初始数据
   data: {
     title:null,
     content:null,
@@ -24,25 +20,17 @@ Page({
     fileIds:[],
     isPost:false
   },
-
-  /**
-   * 监测input
-   * */
+  //监测input
   handleTitleInput(e){},
   handledContentInput(e){},
-
-  /**
-   * 检测复选框*/
+  //检测复选框
   checkboxChange(e){
     this.setData({
       tags:e.detail.value
     })
   },
-
-  /**
-   * 选择图片
-   * */
-  ChooseImage() {
+  //选择图片
+  ChooseImage(){
     wx.chooseImage({
       count: 4, //默认9
       sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
@@ -72,20 +60,14 @@ Page({
       }
     });
   },
-
-  /**
-   * 浏览图片
-   * */
+  //浏览图片
   ViewImage:function (e) {
     wx.previewImage({
       urls: this.data.imgList,
       current: e.currentTarget.dataset.url
     });
   },
-
-  /**
-   * 删除图片
-   * */
+  //删除图片
   DelImg:function (e) {
     wx.showModal({
       title: '您正在删除图片...',
@@ -115,26 +97,22 @@ Page({
       }
     })
   },
-
- /**
-  * 上传图片*/
- handleUpload(fileName,filePath,index){
-   wx.cloud.uploadFile({
-     cloudPath:`newsImage/${fileName}.jpg`,
-     filePath:filePath,
-   }).then(res=>{
-     this.setData({
-       [`fileIds[${index}]`]:res.fileID
+  //上传图片
+  handleUpload(fileName,filePath,index){
+     wx.cloud.uploadFile({
+       cloudPath:`newsImage/${fileName}.jpg`,
+       filePath:filePath,
+     }).then(res=>{
+       this.setData({
+         [`fileIds[${index}]`]:res.fileID
+       })
+     }).catch(err=>{
+       console.log(err)
      })
-   }).catch(err=>{
-     console.log(err)
-   })
- },
-
-  /**
-   * 发起请求
-   * */
+  },
+  //发起请求
   handlePost(){
+    let _id = wx.getStorageSync('userInfo')._id
     wx.showLoading({
       title:'发布中',
     })
@@ -148,7 +126,7 @@ Page({
       setTimeout(()=>{
         news.add({
           data: {
-            user_id:app.globalData.userInfo._id,
+            user_id:_id,
             title: this.data.title,
             content: this.data.content,
             tags: this.data.tags,
@@ -183,7 +161,7 @@ Page({
 
     }
   },
-
+  //离开页面
   onUnload:function (){
     if (this.data.isPost){
       console.log("数据提交成功")
@@ -201,7 +179,7 @@ Page({
       )
     }
   },
-
+  //时间格式化
   TimeFormat(time){
     let date = new Date(time);
     let YY = date.getFullYear() + '-';
@@ -211,6 +189,5 @@ Page({
     let mm = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
     let ss = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
     return YY + MM + DD + " " + hh + mm + ss;
-  },
-
+  }
 })

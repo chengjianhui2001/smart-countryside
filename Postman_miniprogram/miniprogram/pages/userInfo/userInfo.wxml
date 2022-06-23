@@ -11,7 +11,7 @@
                 <text class="text-black">昵称</text>
             </view>
             <view class="action">
-                <text class="text-grey text-lg">{{userInfo.nickName}}</text>
+                <text class="text-grey text-lg">{{userInfo.nickName===undefined?'未知':userInfo.nickName}}</text>
             </view>
         </view>
         <view class="cu-item">
@@ -19,7 +19,7 @@
                 <text class="text-black">性别</text>
             </view>
             <view class="action">
-                <text class="text-grey text-lg">{{userInfo.gender===0?'未知':userInfo.gender===1?'男':'女'}}</text>
+                <text class="text-grey text-lg">{{userInfo.gender===0||userInfo.gender===undefined?'未知':userInfo.gender===1?'男':'女'}}</text>
             </view>
         </view>
         <view class="cu-item">
@@ -27,7 +27,7 @@
                 <text class="text-black">手机号</text>
             </view>
             <view class="action">
-                <text class="text-grey text-lg">{{(userInfo.phoneNumber===''||userInfo.phoneNumber===null)?'未知':userInfo.phoneNumber}}</text>
+                <text class="text-grey text-lg">{{(userInfo.phoneNumber===''||userInfo.phoneNumber===null||userInfo.phoneNumber===undefined)?'未知':userInfo.phoneNumber}}</text>
             </view>
         </view>
         <view class="cu-item">
@@ -35,7 +35,7 @@
                 <text class="text-black">地区</text>
             </view>
             <view class="action">
-                <text class="text-grey text-lg">{{(userInfo.city===null||userInfo.city==='')?'未知':userInfo.province+' '+userInfo.city+' '+userInfo.district}}</text>
+                <text class="text-grey text-lg">{{(userInfo.city===null||userInfo.city===''||userInfo.city===undefined)?'未知':userInfo.province+' '+userInfo.city+' '+userInfo.district}}</text>
             </view>
         </view>
         <view class="cu-item">
@@ -43,7 +43,7 @@
                 <text class="text-black">详细地址</text>
             </view>
             <view class="action">
-                <text class="text-grey text-lg">{{(userInfo.detailAddress===null||userInfo.detailAddress==='')?'未知':userInfo.detailAddress}}</text>
+                <text class="text-grey text-lg">{{(userInfo.detailAddress===null||userInfo.detailAddress===''||userInfo.detailAddress===undefined)?'未知':userInfo.detailAddress}}</text>
             </view>
         </view>
     </view>

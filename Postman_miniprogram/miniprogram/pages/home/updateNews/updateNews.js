@@ -1,5 +1,4 @@
 // pages/addNews/addNews.js
-const app = getApp()
 const db = wx.cloud.database()
 const news = db.collection('news')
 
@@ -170,6 +169,7 @@ Page({
      * 发起请求
      * */
     handlePost(){
+        let user_id = wx.getStorageSync('userInfo')._id
         wx.showLoading({
             title:'提交修改中...',
         })
@@ -183,7 +183,7 @@ Page({
             setTimeout(()=>{
                 news.doc(this.data.id).update({
                     data: {
-                        user_id:app.globalData.userInfo._id,
+                        user_id:user_id,
                         title: this.data.title,
                         content: this.data.content,
                         tags: this.data.tags,

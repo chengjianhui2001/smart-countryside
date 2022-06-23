@@ -18,12 +18,26 @@ App({
       name: 'get_openId',
       success: res => {
         //获取用户openid
+        console.log("启动程序----获取用户openId",res)
         this.globalData.user_openid = res.result.openid
+        try {
+          wx.setStorageSync('_openid',  res.result.openid)
+          console.log('缓存_openid',wx.getStorageSync('_openid'))
+        } catch (e) { console.log(e) }
         wx.cloud.database().collection('user').where({
           _openid:res.result.openid
         }).get({
           success:res => {
+            console.log('根据openId查询数据库中是否存在该用户',res)
             this.globalData.userInfo = res.data[0]
+            if (res.data.length===0){
+              console.log('数据库中不存在该用户')
+            }else {
+              try {
+                wx.setStorageSync('userInfo', res.data[0])
+                console.log('缓存userInfo',wx.getStorageSync('userInfo'))
+              } catch (e) { console.log(e) }
+            }
           }
         })
       }
@@ -33,20 +47,7 @@ App({
       //用户openid
       user_openid: null,
       //用户信息
-      userInfo: {
-        _id:null,
-        _openid:null,
-        avatarUrl:null,
-        country:'',
-        province:'',
-        city:'',
-        district:'',
-        detailAddress:null,
-        nickName:null,
-        gender:null,
-        language:null,
-        phoneNumber:null
-      }
+      userInfo: {}
     };
   }
 });

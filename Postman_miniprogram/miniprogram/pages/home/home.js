@@ -1,5 +1,4 @@
 // pages/home/home.js
-const app = getApp()
 const db = wx.cloud.database()
 const news = db.collection('news')
 const _ = db.command
