@@ -1,0 +1,12 @@
+/* pages/first/first.wxss */
+.card {
+    width: 90%;
+    min-height: 150rpx;
+    border-radius: 50rpx;
+    background-color: aquamarine;
+    margin-top: 50rpx;
+}
+
+.margin-bottom-50 {
+    margin-bottom: 50rpx;
+}

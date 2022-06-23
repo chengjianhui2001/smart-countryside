@@ -1,55 +1,43 @@
-<!--pages/function/function.wxml-->
-<swiper class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
-  <swiper-item wx:for="{{4}}" wx:key="id">
-    <image src="../../images/function/{{item}}.jpg" mode='aspectFill'></image>
-  </swiper-item>
-</swiper>
+<view id="main">
 
-<view class="main">
+    <swiper class="card-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="10000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
+        <swiper-item wx:for="{{mediaList}}" wx:key="id" class="{{cardCur===index?'cur':''}}">
+            <view class="swiper-item">
+                <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type==='image'}}"></image>
+                <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type==='video'}}"></video>
+            </view>
+        </swiper-item>
+    </swiper>
 
-  <van-sidebar active-key="{{ activeKey }}" bind:change="onChange">
-    <van-sidebar-item title="产业振兴" />
-    <van-sidebar-item title="人才振兴" />
-    <van-sidebar-item title="文化振兴" />
-    <van-sidebar-item title="生态振兴" />
-  </van-sidebar>
-
-  <block wx:if="{{activeKey===0}}">
-    <view class="cu-card card_s">
-      <van-grid column-num="3">
-        <van-grid-item icon="photo-o" text="同镇任务"/>
-      </van-grid>
+    <view class="cu-bar bg-white solid-bottom margin-top">
+        <view class="action">
+            <text class="cuIcon-title text-orange "></text> 功能
+        </view>
+        <view class="action">
+            <switch class="switch-columns sm radius green" bindchange="switchColumns" ></switch>
+        </view>
     </view>
-  </block>
-
-  <block wx:if="{{activeKey===1}}">
-    <view class="cu-card card_s" >
-      <van-grid column-num="3">
-        <van-grid-item icon="photo-o" text="人才需求"/>
-        <van-grid-item icon="photo-o" text="简历投递"/>
-      </van-grid>
+    <view class="cu-list menu">
+        <view class="cu-item">
+            <view class="content padding-tb-sm">
+                <view>
+                    <text class="cuIcon-locationfill text-blue margin-right-xs"></text> 当前定位:</view>
+                <view class="text-black text-sm">
+                    {{(locationInfo.address===undefined|| locationInfo.name===undefined)?"暂无地址":locationInfo.address}}
+                </view>
+            </view>
+            <view class="action">
+                <button class="cu-btn round line-blue" bindtap="choose_location">
+                    <text class="cuIcon-location text-df"></text>选择位置
+                </button>
+            </view>
+        </view>
+        <view class="cu-list grid col-{{gridCol}} solid-bottom">
+            <view class="cu-item" wx:for="{{iconList}}" wx:key="id">
+                <view class="cuIcon-{{item.icon}} text-{{item.color}}"></view>
+                <text>{{item.name}}</text>
+            </view>
+        </view>
     </view>
-  </block>
-
-  <block wx:if="{{activeKey===2}}">
-    <view class="cu-card card_s" >
-      <van-grid column-num="3">
-        <van-grid-item icon="photo-o" text="小镇介绍"/>
-        <van-grid-item icon="photo-o" text="人文特色"/>
-        <van-grid-item icon="photo-o" text="饮食文化"/>
-      </van-grid>
-    </view>
-  </block>
-
-  <block wx:if="{{activeKey===3}}">
-    <view class="cu-card card_s" >
-      <van-grid column-num="3">
-        <van-grid-item icon="photo-o" text="生态建设"/>
-      </van-grid>
-    </view>
-  </block>
 
 </view>
-
-
-

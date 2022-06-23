@@ -47,7 +47,24 @@ App({
       //用户openid
       user_openid: null,
       //用户信息
-      userInfo: {}
+      userInfo: {},
+      //全局数据管理
+      Custom: 0,
+      CustomBar: 0,
+      StatusBar:0
     };
-  }
+
+    wx.getSystemInfo({
+      success: e => {
+        this.globalData.StatusBar = e.statusBarHeight;
+        let capsule = wx.getMenuButtonBoundingClientRect();
+        if (capsule) {
+          this.globalData.Custom = capsule;
+          this.globalData.CustomBar = capsule.bottom + capsule.top - e.statusBarHeight;
+        } else {
+          this.globalData.CustomBar = e.statusBarHeight + 50;
+        }
+      }
+    })
+  },
 });

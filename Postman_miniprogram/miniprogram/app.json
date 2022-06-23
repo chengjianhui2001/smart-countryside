@@ -1,8 +1,9 @@
 {
   "pages": [
-    "pages/home/home",
-    "pages/mine/mine",
+    "pages/first/first",
     "pages/function/function",
+    "pages/moments/moments",
+    "pages/mine/mine",
     "pages/login/login",
     "pages/index/index",
     "pages/userSettings/userSettings/userSettings",
@@ -11,12 +12,11 @@
     "pages/userSettings/help/help",
     "pages/userInfo/userInfo",
     "pages/editUserInfo/editUserInfo",
-    "pages/home/addNews/addNews",
+    "pages/moments/addNews/addNews",
     "pages/contentMg/contentMg",
     "pages/contentMg/news/news",
-    "pages/home/detailNews/detailNews",
-    "pages/home/updateNews/updateNews",
-    "pages/function2/function2"
+    "pages/moments/detailNews/detailNews",
+    "pages/moments/updateNews/updateNews"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -36,14 +36,8 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/home/home",
+        "pagePath": "pages/first/first",
         "text": "首页",
-        "iconPath": "images/tabBar/home.png",
-        "selectedIconPath": "images/tabBar/homeSelected.png"
-      },
-      {
-        "pagePath": "pages/function2/function2",
-        "text": "功能",
         "iconPath": "images/tabBar/function.png",
         "selectedIconPath": "images/tabBar/functionSelected.png"
       },
@@ -56,5 +50,21 @@
     ],
     "selectedColor": "#1296db",
     "backgroundColor": "#fae3cb"
+  },
+  "plugins": {
+    "chooseLocation": {
+      "version": "1.0.9",
+      "provider": "wx76a9a06e5b4e693e"
+    },
+    "routePlan": {
+      "version": "1.0.18",
+      "provider": "wx50b5593e81dd937a"
+    }
+    },
+  "permission": {
+      "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序定位"
+      }
   }
+    
 }

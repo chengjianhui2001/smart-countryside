@@ -141,8 +141,8 @@ Page({
             wx.hideLoading({
               success:res1 => {
                 console.log(res)
-                wx.switchTab({
-                  url:'/pages/home/home',
+                wx.redirectTo({
+                  url:'/pages/moments/moments',
                   success:res2 => {
                     wx.showToast({
                       title:'发布成功',

@@ -1,17 +1,9 @@
-/* pages/function/function.wxss */.main {
-  display: flex;
-  height: calc(100vh - 375rpx);
+/* pages/function/function.wxss */
+.switch-columns::after {
+    content: "\e6a5";
 }
 
-.card_s {
-  background-color: bisque;
-  width: 100%;
+.switch-columns::before {
+    content: "\e729";
 }
 
-.gird-item {
-  background-color: aqua;
-  width: 25%;
-  height: 50px;
-  box-sizing: border-box;
-  border: 1px solid black;
-}

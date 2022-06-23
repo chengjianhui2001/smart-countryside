@@ -14,7 +14,7 @@
     <view style="width:100vw;height:100rpx"></view>
     <view class="cu-bar bg-white solid-bottom">
         <view class='action'>
-            <text class='cuIcon-titles text-orange '></text>新闻热点
+            <text class='cuIcon-titles text-orange '></text>乡镇圈
         </view>
         <view class="flex">
             <view class='action flex align-center'>

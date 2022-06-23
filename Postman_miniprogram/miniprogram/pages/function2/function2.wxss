@@ -1,8 +1,0 @@
-/* pages/function2/function2.wxss */
-.switch-columns::after {
-    content: "\e6a5";
-}
-
-.switch-columns::before {
-    content: "\e6e2";
-}
