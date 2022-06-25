@@ -1,0 +1,13 @@
+<!--pages/map/map.wxml-->
+<view id="main">
+    <map id="map"
+         class="map"
+         subkey="{{key}}"
+         latitude="30.747436853625416"
+         longitude="120.49004723258815"
+         scale="14"
+         layer-style="1"
+         enable-3D="true"
+         show-compass="true"
+    ></map>
+</view>

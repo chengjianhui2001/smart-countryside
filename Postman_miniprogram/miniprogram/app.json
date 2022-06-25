@@ -2,21 +2,21 @@
   "pages": [
     "pages/first/first",
     "pages/function/function",
-    "pages/moments/moments",
     "pages/mine/mine",
-    "pages/login/login",
-    "pages/index/index",
-    "pages/userSettings/userSettings/userSettings",
-    "pages/userSettings/aboutUs/aboutUs",
-    "pages/userSettings/funIntroduction/funIntroduction",
-    "pages/userSettings/help/help",
-    "pages/userInfo/userInfo",
-    "pages/editUserInfo/editUserInfo",
+    "pages/mine/user/userInfo/userInfo",
+    "pages/mine/user/editUserInfo/editUserInfo",
+    "pages/mine/service/news/news",
+    "pages/mine/admin/addDailyLaw/addDailyLaw",
+    "pages/mine/help/aboutUs/aboutUs",
+    "pages/mine/help/funIntroduction/funIntroduction",
+    "pages/town/town",
+    "pages/town/map/map",
+    "pages/moments/moments",
     "pages/moments/addNews/addNews",
-    "pages/contentMg/contentMg",
-    "pages/contentMg/news/news",
     "pages/moments/detailNews/detailNews",
-    "pages/moments/updateNews/updateNews"
+    "pages/moments/updateNews/updateNews",
+    "pages/dailyLaw/dailyLaw",
+    "pages/dailyLaw/makeAnswer/makeAnswer"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -60,11 +60,10 @@
       "version": "1.0.18",
       "provider": "wx50b5593e81dd937a"
     }
-    },
+  },
   "permission": {
-      "scope.userLocation": {
+    "scope.userLocation": {
       "desc": "你的位置信息将用于小程序定位"
-      }
+    }
   }
-    
 }

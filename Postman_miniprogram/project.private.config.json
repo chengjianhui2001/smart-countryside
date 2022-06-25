@@ -7,20 +7,6 @@
     "miniprogram": {
       "list": [
         {
-          "name": "home",
-          "pathName": "pages/home/home",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "login",
-          "pathName": "pages/login/login",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
           "name": "mine",
           "pathName": "pages/mine/mine",
           "query": "",
@@ -28,36 +14,8 @@
           "scene": null
         },
         {
-          "name": "设置",
-          "pathName": "pages/userSettings/userSettings/userSettings",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "帮助",
-          "pathName": "pages/userSettings/help/help",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "账号信息",
-          "pathName": "pages/userInfo/userInfo",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "编辑用户信息",
-          "pathName": "pages/editUserInfo/editUserInfo",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
           "name": "",
-          "pathName": "pages/index/index",
+          "pathName": "pages/mine/admin/addDailyLaw/addDailyLaw",
           "query": "",
           "launchMode": "default",
           "scene": null

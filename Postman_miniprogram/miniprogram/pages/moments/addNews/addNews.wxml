@@ -5,9 +5,9 @@
             <view class="title">主题</view>
             <input model:value="{{title}}" placeholder="请输入主题" bind:input="handleTitleInput"></input>
         </view>
-        <view class="cu-form-group align-start">
+        <view class="cu-form-group">
             <view class="title">内容</view>
-            <textarea model:value="{{content}}" placeholder="请输入新闻内容" bind:input="handledContentInput"></textarea>
+            <textarea maxlength="-1" model:value="{{content}}" placeholder="请输入新闻内容" bind:input="handledContentInput"></textarea>
         </view>
         <view class="cu-form-group margin-top">
             <view class="title">标签</view>

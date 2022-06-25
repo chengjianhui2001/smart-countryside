@@ -28,6 +28,10 @@
   padding-bottom: 0;
 }
 
+.border-radius-20 {
+  border-radius: 20rpx;
+}
+
 .nickname {
   text-align: left;
   padding-left: 30rpx;
@@ -35,4 +39,23 @@
 
 .br-r {
   border-radius: 20rpx;
+}
+
+button::after {
+  border: none;
+  background-color: none;
+}
+
+button{
+  width: 100%;
+  background-color: white;
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  line-height: normal;
+}
+/* 去除边框 */
+button::after{
+  border: none;
+  border-radius: 0;
 }

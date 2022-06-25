@@ -75,5 +75,18 @@ Page({
     }
   },
 
+  /**
+   * 客服消息
+   * */
+  handleContact(e){
+    wx.cloud.callFunction({
+      name:'contactMessage',
+      data:e.detail.query,
+      success: res => {
+        console.log(res)
+      }
+    })
+  }
+
 
 })

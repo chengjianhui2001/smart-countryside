@@ -1,6 +1,10 @@
 <!--pages/first/first.wxml-->
-<cu-custom bgColor="bg-gradual-blue">
-    <view slot="content">ColorUI 空白模板</view>
+<cu-custom bgColor="">
+    <view slot="right" class="flex-sub">
+        <view class="padding-left-lg">
+            <text class="text-black text-bold before">智慧乡镇</text>
+        </view>
+    </view>
 </cu-custom>
 <view>
     <view class="flex flex-direction align-center">
@@ -32,45 +36,25 @@
         </view>
 
         <view class="card animated fadeInLeft bg-img bg-mask padding-tb-xl">
-            <view class="padding text-white">
-                <view class="padding-xs text-xl">
-                    乡镇圈
+            <navigator url="/pages/dailyLaw/dailyLaw" hover-class="none">
+                <view class="padding text-white">
+                    <view class="padding-xs text-xl">
+                        每日普法
+                    </view>
+                    <view class="padding-xs">
+                        Daily law popularization
+                    </view>
                 </view>
-                <view class="padding-xs">
-                    Scenic spot recommendation
-                </view>
-            </view>
+            </navigator>
         </view>
 
         <view class="card animated fadeInRight bg-img bg-mask padding-tb-xl">
             <view class="padding text-white">
                 <view class="padding-xs text-xl flex justify-end">
-                    每日普法
-                </view>
-                <view class="padding-xs flex justify-end">
-                    Daily law popularization
-                </view>
-            </view>
-        </view>
-
-        <view class="card animated fadeInLeft bg-img bg-mask padding-tb-xl">
-            <view class="padding text-white">
-                <view class="padding-xs text-xl">
                     知识贴士
                 </view>
-                <view class="padding-xs">
-                    Tips of Knowledge
-                </view>
-            </view>
-        </view>
-
-        <view class="card animated fadeInRight bg-img bg-mask padding-tb-xl margin-bottom-50">
-            <view class="padding text-white">
-                <view class="padding-xs text-xl flex justify-end">
-                    景点推荐
-                </view>
                 <view class="padding-xs flex justify-end">
-                    Recommendation of scenic spot
+                    Tips of Knowledge
                 </view>
             </view>
         </view>

@@ -1,0 +1,13 @@
+/* pages/dailyLaw/makeAnswer/makeAnswer.wxss */
+.card {
+    width: 90%;
+    min-height: 450rpx;
+    border-radius: 50rpx;
+    background-color: dodgerblue;
+}
+
+button[disabled]{
+    color: #fff !important;
+    background: transparent !important;
+    border-color: transparent !important;
+}
