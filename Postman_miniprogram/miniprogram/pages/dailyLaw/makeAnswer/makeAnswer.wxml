@@ -1,49 +1,43 @@
 <!--pages/dailyLaw/makeAnswer/makeAnswer.wxml-->
 <view>
-    <view class="cu-bar justify-start">
+    <view class="cu-bar justify-between  border-title">
         <view class="action border-title">
-            <text class="text-xl text-bold text-blue">当前分数:</text>
-            <text class="text-xxl text-bold {{score<60?'text-red':'text-blue'}}">{{score}}</text>
-            <text class="bg-gradual-blue" style="width:200rpx"></text>
+            <text class="text-xl text-bold text-blue">题集:{{title}}</text>
+            <text class="bg-gradual-blue" style="width:250rpx"></text>
+        </view>
+        <view class="action border-title">
+            <text class="text-xl text-bold text-blue">当前题目：{{index+1}}/{{count}}</text>
         </view>
     </view>
-    <view wx:if="{{isRight==='F'}}" class="cu-bar justify-start {{isRight==='F'?'animated fadeInLeft':''}}">
-        <view class="action">
-            <text class="cuIcon-titles text-green"></text>
-            <text class="text-xl text-bold">正确答案：{{questions[index].answer}}</text>
-        </view>
-    </view>
-    <view id="answerCard" class="flex justify-center padding-xs margin-top-lg">
+    <view class="flex justify-center padding-xs margin-top {{openAnimate==='B'?'fade':''}}">
         <view class="flex card justify-center align-center bg-gradual-green shadow-blur">
             <view style="width:600rpx" class="flex-direction flex justify-center">
                 <view class="action margin-sm">
-                    <text class="cuIcon-title text-blue"></text>{{questions[index].question}}
+                    <text class="text-bold">{{index+1}}.{{questions[index].question}}</text>
                 </view>
-                <button id="c1"
-                        disabled="{{isDisable}}"
-                        class="cu-btn no-border round line-white margin-xs"
-                        data-value="{{questions[index].choose[0]}}"
-                        data-id="#c1"
-                        bindtap="chooseAnswer">{{questions[index].choose[0]}}</button>
-                <button id="c2"
-                        disabled="{{isDisable}}"
-                        class="cu-btn no-border round line-white margin-xs "
-                        data-value="{{questions[index].choose[1]}}"
-                        data-id="#c2"
-                        bindtap="chooseAnswer">{{questions[index].choose[1]}}</button>
-                <button id="c3"
-                        disabled="{{isDisable}}"
-                        class="cu-btn no-border round line-white margin-xs "
-                        data-id="#c3"
-                        data-value="{{questions[index].choose[2]}}"
-                        bindtap="chooseAnswer">{{questions[index].choose[2]}}</button>
-                <button id="c4"
-                        disabled="{{isDisable}}"
-                        class="cu-btn no-border round line-white margin-xs "
-                        data-id="#c4"
-                        data-value="{{questions[index].choose[3]}}"
-                        bindtap="chooseAnswer">{{questions[index].choose[3]}}</button>
+                <radio-group class="block" bindchange="getValue">
+                    <view class="card-body">
+                        <view class="title">A.{{questions[index].choose[0]}}</view>
+                        <radio class="blue radio" model:checked="{{choose1}}" value="{{questions[index].choose[0]}}"></radio>
+                    </view>
+                    <view class="card-body">
+                        <view class="title">B.{{questions[index].choose[1]}}</view>
+                        <radio class="blue radio" model:checked="{{choose2}}" value="{{questions[index].choose[1]}}"></radio>
+                    </view>
+                    <view class="card-body">
+                        <view class="title">C.{{questions[index].choose[2]}}</view>
+                        <radio class="blue radio" model:checked="{{choose3}}" value="{{questions[index].choose[2]}}"></radio>
+                    </view>
+                    <view class="card-body">
+                        <view class="title">D.{{questions[index].choose[3]}}</view>
+                        <radio class="blue radio" model:checked="{{choose4}}" value="{{questions[index].choose[3]}}"></radio>
+                    </view>
+                </radio-group>
             </view>
         </view>
+    </view>
+    <view class="padding-xl">
+        <button wx:if="{{index<count-1}}" class="cu-btn bg-blue block" bindtap="nextDB">下一题</button>
+        <button wx:else class="cu-btn bg-green block" bindtap="submitDB">提交</button>
     </view>
 </view>

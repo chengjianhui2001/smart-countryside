@@ -16,7 +16,10 @@
     "pages/moments/detailNews/detailNews",
     "pages/moments/updateNews/updateNews",
     "pages/dailyLaw/dailyLaw",
-    "pages/dailyLaw/makeAnswer/makeAnswer"
+    "pages/dailyLaw/makeAnswer/makeAnswer",
+    "pages/dailyLaw/history/history",
+    "pages/dailyLaw/score/score",
+    "pages/dailyLaw/details/details"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

@@ -48,6 +48,12 @@
                     <text>乡镇圈</text>
                 </navigator>
             </view>
+            <view class="cu-item">
+                <navigator class="content" hover-class="none" url="/pages/dailyLaw/history/history" open-type="navigate">
+                    <view class="cuIcon-timefill text-brown"></view>
+                    <text>每日普法</text>
+                </navigator>
+            </view>
         </view>
     </view>
 

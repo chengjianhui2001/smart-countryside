@@ -1,8 +1,7 @@
 <!--pages/daliyLaw/dailyLaw.wxml-->
-<view id="main" class="flex justify-center align-center">
-    <view class="box">
+<view id="main" class="flex justify-center align-start">
+    <view class="box margin-top-xl">
         <view class="flex flex-direction">
-
             <view class="flex flex-sub justify-center align-center padding-xs" style="font-size:40rpx">
                 <view class="line bg-brown margin-right-xs"></view>
                 <text class="text-brown text-bold padding-xs">知识答题</text>
@@ -21,14 +20,19 @@
                 <view class="text-df padding-xs">家有常业，虽饥不饿；国有常法，虽危不亡。</view>
             </view>
             <view class="flex justify-center padding-xl">
-                <button class="cu-btn block bg-brown margin-right">
-                    <text class="cuIcon-time"></text>查看记录
-                </button>
-                <navigator url="/pages/dailyLaw/makeAnswer/makeAnswer">
+                <navigator url="/pages/dailyLaw/history/history" hover-class="none">
+                    <button class="cu-btn block bg-brown margin-right">
+                        <text class="cuIcon-time"></text>查看记录
+                    </button>
+                </navigator>
+                <navigator url="/pages/dailyLaw/makeAnswer/makeAnswer" hover-class="none">
                     <button class="cu-btn block bg-brown">
                         <text class="cuIcon-game"></text> 开始答题
                     </button>
                 </navigator>
+            </view>
+            <view class="flex flex-sub justify-center margin-bottom">
+                <text class="text-bold text-blue">今日最高分:{{score===-1?'今日暂无成绩':score}}</text>
             </view>
         </view>
     </view>

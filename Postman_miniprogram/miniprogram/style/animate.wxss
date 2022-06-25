@@ -1757,6 +1757,8 @@
   animation-name: fadeOutRight;
 }
 
+
+
 @-webkit-keyframes fadeOutRightBig {
   from {
     opacity: 1;

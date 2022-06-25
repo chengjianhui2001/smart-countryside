@@ -1,0 +1,26 @@
+<view>
+    <block wx:for="{{infos}}" wx:key="id">
+        <van-swipe-cell right-width="{{ 160 }}">
+            <view class="cu-list menu">
+                <view class="cu-item">
+                    <view class="content padding-tb-sm">
+                        <view>
+                            <text class="cuIcon-list text-blue margin-right-xs"></text> 题集名称：{{item.title}}
+                        </view>
+                        <view class="text">
+                            <text class="text-blue  cuIcon-timefill margin-right-xs"></text>
+                            <text>完成时间：{{item.create_time_show}}</text>
+                        </view>
+                        <view class="text-orange text">
+                            <text class="cuIcon-selection margin-right-xs"></text> 得分：{{item.score}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view slot="right" class="right">
+                <view class="bg-blue item" data-id="{{item._id}}" bind:tap="select">查看</view>
+                <view class="bg-red item" bindtap="handleDelete" data-id="{{item._id}}" data-fileList="{{item.fileIds}}">删除</view>
+            </view>
+        </van-swipe-cell>
+    </block>
+</view>

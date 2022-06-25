@@ -1,0 +1,15 @@
+/* pages/dailyLaw/score/score.wxss */
+.card {
+    width: 90%;
+    min-height: 450rpx;
+    border-radius: 50rpx;
+    background-color: dodgerblue;
+}
+
+.card-body {
+    padding: 1rpx 30rpx;
+    display: flex;
+    align-items: center;
+    min-height:70rpx;
+    justify-content: space-between;
+}

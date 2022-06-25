@@ -6,8 +6,31 @@
     background-color: dodgerblue;
 }
 
-button[disabled]{
-    color: #fff !important;
-    background: transparent !important;
-    border-color: transparent !important;
+.card-body {
+    padding: 1rpx 30rpx;
+    display: flex;
+    align-items: center;
+    min-height:70rpx;
+    justify-content: space-between;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 2s;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
 }
