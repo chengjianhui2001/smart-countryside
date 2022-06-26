@@ -1,0 +1,103 @@
+<view>
+    <van-tabs active="{{ active }}" bind:change="onChange" animated sticky swipeable>
+        <van-tab title="特色文化">
+            <view class="page bg-brown">
+                <block wx:for="{{cultural}}" wx:key="id">
+                    <navigator hover-class="none" url="/pages/information/detailInformation/detailInformation?fileId={{item.fileId}}">
+                        <view class="cu-card case">
+                            <view class="cu-item shadow">
+                                <view class="image">
+                                    <image src="{{item.coverId}}" mode="widthFix"></image>
+                                    <view class="cu-tag bg-blue">{{item.type==='activity'?'活动':'通知'}}</view>
+                                    <view class="cu-bar bg-shadeBottom">
+                                        <text class="text-cut">{{item.title}}</text>
+                                    </view>
+                                </view>
+                                <view class="cu-list menu-avatar">
+                                    <view class="cu-item">
+                                        <image class="cu-avatar round lg" src="{{item.userInfo[0].avatarUrl}}"></image>
+                                        <view class="content flex-sub">
+                                            <view class="text-grey">{{item.userInfo[0].nickName}}</view>
+                                            <view class="text-gray text-sm flex justify-between">
+                                                <view class="text-cut text-black" style="width:400rpx">简介:{{item.introduction}}</view>
+                                                <view class="text-gray text-sm">
+                                                    <text class="cuIcon-favor margin-lr-xs"></text> 30
+                                                </view>
+                                            </view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </navigator>
+                </block>
+            </view>
+        </van-tab>
+        <van-tab title="乡镇活动">
+            <view class="page bg-green">
+                <block wx:for="{{activity}}" wx:key="id">
+                    <navigator hover-class="none" url="/pages/information/detailInformation/detailInformation?fileId={{item.fileId}}">
+                        <view class="cu-card case">
+                            <view class="cu-item shadow">
+                                <view class="image">
+                                    <image src="{{item.coverId}}" mode="widthFix"></image>
+                                    <view class="cu-tag bg-blue">{{item.type==='activity'?'活动':'通知'}}</view>
+                                    <view class="cu-bar bg-shadeBottom">
+                                        <text class="text-cut">{{item.title}}</text>
+                                    </view>
+                                </view>
+                                <view class="cu-list menu-avatar">
+                                    <view class="cu-item">
+                                        <image class="cu-avatar round lg" src="{{item.userInfo[0].avatarUrl}}"></image>
+                                        <view class="content flex-sub">
+                                            <view class="text-grey">{{item.userInfo[0].nickName}}</view>
+                                            <view class="text-gray text-sm flex justify-between">
+                                                <view class="text-cut text-black" style="width:400rpx">简介:{{item.introduction}}</view>
+                                                <view class="text-gray text-sm">
+                                                    <text class="cuIcon-favor margin-lr-xs"></text> 30
+                                                </view>
+                                            </view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </navigator>
+                </block>
+            </view>
+        </van-tab>
+        <van-tab title="乡镇快报">
+            <view class="page bg-green">
+                <block wx:for="{{inform}}" wx:key="id">
+                    <navigator hover-class="none" url="/pages/information/detailInformation/detailInformation?fileId={{item.fileId}}">
+                        <view class="cu-card case">
+                            <view class="cu-item shadow">
+                                <view class="image">
+                                    <image src="{{item.coverId}}" mode="widthFix"></image>
+                                    <view class="cu-tag bg-blue">{{item.type==='activity'?'活动':'通知'}}</view>
+                                    <view class="cu-bar bg-shadeBottom">
+                                        <text class="text-cut">{{item.title}}</text>
+                                    </view>
+                                </view>
+                                <view class="cu-list menu-avatar">
+                                    <view class="cu-item">
+                                        <image class="cu-avatar round lg" src="{{item.userInfo[0].avatarUrl}}"></image>
+                                        <view class="content flex-sub">
+                                            <view class="text-grey">{{item.userInfo[0].nickName}}</view>
+                                            <view class="text-gray text-sm flex justify-between">
+                                                <view class="text-cut text-black" style="width:400rpx">简介:{{item.introduction}}</view>
+                                                <view class="text-gray text-sm">
+                                                    <text class="cuIcon-favor margin-lr-xs"></text> 30
+                                                </view>
+                                            </view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </view>
+                    </navigator>
+                </block>
+            </view>
+        </van-tab>
+    </van-tabs>
+</view>

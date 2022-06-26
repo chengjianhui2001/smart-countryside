@@ -18,34 +18,24 @@ Page({
     title:null,
     count:0,
     questions:[],
-    /*questions:[
-      {
-        answer:"最高权力机构是股东大会",
-        choose: ["最高权力机构是股东大会","最高决策机构是董事会","股东以出资额为限承担有限责任","有限责任和合伙制公司三类"],
-        question:"关于公司制，下列说法正确的有："
-      },
-      {
-        answer:"asdfafasf",
-        choose: ["sdfsfsdf","sdfsdfsdfs","sfsdfsdfsd","sdfsdfsdf、sdfsdfsf"],
-        question:"sdfs，dsdfsfsf："
-      },
-      {
-        answer:"asdf12354124124afasf",
-        choose: ["sdfsfs23423423423df","sdfs23423423423dfsdfs","sfsdf32424sdfsd","sdfs234242dfsdf、sdfsd234234234fsf"],
-        question:"sdfs34234234，dsdfs2342342fsf："
-      }
-    ],*/
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    console.log("初始化运行...")
     wx.showLoading({
       title:'数据加载中'
     })
-    let start = this.timeFormat(new Date())+" 00:00:00"
-    let end = this.timeFormat(new Date())+" 23:59:59"
+    this.getData(res=>{
+      wx.hideLoading()
+    })
+  },
+
+  getData(callback){
+    let start = new Date(new Date(new Date().getTime()).setHours(0,0,0,0));
+    let end = new Date(new Date(new Date().getTime()).setHours(59,59,59,59));
     db.collection('law_question')
         .where(_.and([
           {
@@ -55,7 +45,7 @@ Page({
             create_time:_.lt(new Date(end))
           },
         ]))
-        .orderBy('create_time','asc')
+        .orderBy('create_time','desc')
         .limit(1)
         .get({
           success:res => {
@@ -66,7 +56,7 @@ Page({
               count:res.data[0].count,
               questions:res.data[0].questions
             },res=>{
-              wx.hideLoading()
+              callback()
             })
           }
         })

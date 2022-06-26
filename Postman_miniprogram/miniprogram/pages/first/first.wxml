@@ -8,21 +8,23 @@
 </cu-custom>
 <view>
     <view class="flex flex-direction align-center">
-        <view class="card animated fadeInLeft bg-img bg-mask padding-tb-xl" style="background-image: url('../../images/towns.jpg')">
-            <view class="padding text-white">
-                <view class="padding-xs text-xl">
-                    乡镇介绍
+        <view class="card animated fadeInLeft bg-img bg-mask padding-bottom-xl" style="background-image: url('https://s2.loli.net/2022/06/25/WsxRulaEOgyDe4X.jpg')">
+            <navigator url="/pages/town/town">
+                <view class="padding text-white">
+                    <view class="padding-xs text-xl">
+                        乡镇介绍
+                    </view>
+                    <view class="padding-xs">
+                        Introduction to villages and towns
+                    </view>
                 </view>
-                <view class="padding-xs">
-                    Introduction to villages and towns
-                </view>
-            </view>
+            </navigator>
         </view>
 
         <view></view>
 
 
-        <view class="card animated fadeInRight bg-img bg-mask padding-tb-xl" style="background-image: url('../../images/moments.jpg')">
+        <view class="card animated fadeInRight bg-img bg-mask padding-bottom-xl" style="background-image: url('https://s2.loli.net/2022/06/25/NWX6rZMEem3LI79.jpg')">
             <navigator url="/pages/moments/moments" hover-class="none">
                 <view class="padding text-white">
                     <view class="padding-xs text-xl flex justify-end">
@@ -35,7 +37,7 @@
             </navigator>
         </view>
 
-        <view class="card animated fadeInLeft bg-img bg-mask padding-tb-xl" style="background-image: url('../../images/law.jpg')">
+        <view class="card animated fadeInLeft bg-img bg-mask padding-bottom-xl" style="background-image: url('https://s2.loli.net/2022/06/25/2q9Ikhlr6MHn1dy.jpg')">
             <navigator url="/pages/dailyLaw/dailyLaw" hover-class="none">
                 <view class="padding text-white">
                     <view class="padding-xs text-xl">
@@ -48,15 +50,17 @@
             </navigator>
         </view>
 
-        <view class="card animated fadeInRight bg-img bg-mask padding-tb-xl" style="background-image: url('../../images/knowledge.jpg')">
-            <view class="padding text-white">
-                <view class="padding-xs text-xl flex justify-end">
-                    知识贴士
+        <view class="card animated fadeInRight bg-img bg-mask padding-bottom-xl" style="background-image: url('https://s2.loli.net/2022/06/25/2GbrfOksXcEWFHh.jpg')">
+            <navigator url="/pages/knowledge/knowledge" hover-class="none">
+                <view class="padding text-white">
+                    <view class="padding-xs text-xl flex justify-end">
+                        知识贴士
+                    </view>
+                    <view class="padding-xs flex justify-end">
+                        Tips of Knowledge
+                    </view>
                 </view>
-                <view class="padding-xs flex justify-end">
-                    Tips of Knowledge
-                </view>
-            </view>
+            </navigator>
         </view>
     </view>
 </view>

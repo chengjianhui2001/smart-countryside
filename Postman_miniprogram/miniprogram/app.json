@@ -19,7 +19,10 @@
     "pages/dailyLaw/makeAnswer/makeAnswer",
     "pages/dailyLaw/history/history",
     "pages/dailyLaw/score/score",
-    "pages/dailyLaw/details/details"
+    "pages/dailyLaw/details/details",
+    "pages/information/information",
+    "pages/information/addInformation/addInformation",
+    "pages/information/detailInformation/detailInformation"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -30,14 +33,23 @@
   },
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
+    "towxml": "/towxml/towxml",
     "cu-custom": "/colorui/components/cu-custom",
     "van-swipe-cell": "@vant/weapp/swipe-cell/index",
     "van-cell": "@vant/weapp/cell/index",
     "van-cell-group": "@vant/weapp/cell-group/index",
-    "van-icon": "@vant/weapp/icon/index"
+    "van-icon": "@vant/weapp/icon/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index"
   },
   "tabBar": {
     "list": [
+      {
+        "pagePath": "pages/information/information",
+        "text": "首页",
+        "iconPath": "images/tabBar/function.png",
+        "selectedIconPath": "images/tabBar/functionSelected.png"
+      },
       {
         "pagePath": "pages/first/first",
         "text": "首页",
@@ -60,7 +72,7 @@
       "provider": "wx76a9a06e5b4e693e"
     },
     "routePlan": {
-      "version": "1.0.18",
+      "version": "1.0.19",
       "provider": "wx50b5593e81dd937a"
     }
   },

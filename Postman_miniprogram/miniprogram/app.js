@@ -1,5 +1,7 @@
 // app.js
 App({
+  //引入 `towxl3.0`解析方法
+  towxml:require('/towxml/index'),
   onLaunch: function () {
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力');

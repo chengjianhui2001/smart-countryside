@@ -1,0 +1,10 @@
+.file-img {
+  position: relative;
+}
+
+.file-tag {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+

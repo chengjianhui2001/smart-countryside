@@ -70,6 +70,12 @@
                     <text>每日普法</text>
                 </navigator>
             </view>
+            <view class="cu-item">
+                <navigator class="content" hover-class="none" url="/pages/information/addInformation/addInformation" >
+                    <view class="cuIcon-cascades text-yellow"></view>
+                    <text>信息发布</text>
+                </navigator>
+            </view>
         </view>
     </view>
 
