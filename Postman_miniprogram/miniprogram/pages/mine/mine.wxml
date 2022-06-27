@@ -1,116 +1,74 @@
 <!--pages/mine/mine.wxml-->
-<view id="mine" style="padding-top: 180rpx;">
-    <view class="padding text-center" >
-        <view class="padding-xl radius shadow bg-white user-card" style="border-radius: 15px;">
-            <view class="avatar-box">
-                <view>
-                    <image class="cu-avatar round lg" src="{{userInfo.avatarUrl}}"></image>
-                </view>
+<view class="top-bg bg-blue">
+    <view class="avatar cu-avatar" bind:tap="{{userInfo?'toUserInfo':'login'}}">
+        <view wx:if="{{userInfo.avatarUrl}}" class="cu-avatar size round"
+              style="background-image:url({{userInfo.avatarUrl}});">
+        </view>
+        <view wx:else class="text-black text-bold background-text">
+            <text class="text-gray">点我登录</text>
+        </view>
+    </view>
+</view>
 
-                <view class="info-box" wx:if="{{userInfo===null}}" bindtap="login">
-                    <view class="text-xl text-bold nickname">
-                        <text class="text-black" bind:tap="login">登录</text>
-                    </view>
-                    <view class="text-xs padding phoneNumber">
-                        <text class="text-black">手机号：暂无手机号</text>
-                    </view>
-                </view>
-                <view class="info-box" wx:else>
-                    <view class="text-xl text-bold nickname">
-                        <text class="text-black">{{userInfo.nickName}}</text>
-                    </view>
-                    <view class="text-xs padding phoneNumber">
-                        <text class="text-black">手机号：{{(userInfo.phoneNumber===''||userInfo.phoneNumber===null ||userInfo.phoneNumber===undefined)?'暂无手机号':userInfo.phoneNumber}}</text>
-                    </view>
-                </view>
-            </view>
-            <navigator url="/pages/mine/user/userInfo/userInfo" class="right-icon" hover-class="none">
-                <view>
-                    <text class="cuIcon-right lg text-gray"></text>
-                </view>
+<view class="padding" style="margin-top:100rpx">
+    <view class="cu-bar bg solid-bottom padding-left-xs">
+        <view class="action">
+            <text class="cuIcon-title text-green"></text>我的
+        </view>
+    </view>
+    <view class="cu-list grid col-5 br no-border no-padding">
+        <view class="cu-item">
+            <navigator class="content" hover-class="none" url="/pages/moments/mgMoment/mgMoment" open-type="navigate">
+                <view class="cuIcon-radioboxfill text-blue"></view>
+                <text>时刻</text>
+            </navigator>
+        </view>
+        <view class="cu-item">
+            <navigator class="content" hover-class="none" url="/pages/dailyLaw/history/history" open-type="navigate">
+                <view class="cuIcon-edit text-brown"></view>
+                <text>我的答题</text>
+            </navigator>
+        </view>
+        <view class="cu-item">
+            <button open-type="contact" bindcontact="handleContact">
+                <view class="cuIcon-weixin text-olive"></view>
+                <text>联系客服</text>
+            </button>
+        </view>
+        <view class="cu-item">
+            <button open-type="feedback">
+                <view class="cuIcon-emoji text-black"></view>
+                <text>反馈</text>
+            </button>
+        </view>
+    </view>
+</view>
+
+<view class="padding">
+    <view class="cu-bar bg solid-bottom padding-left-xs">
+        <view class="action">
+            <text class="cuIcon-title text-blue"></text>管理员
+        </view>
+    </view>
+    <view class="cu-list grid col-5 no-border no-padding br">
+        <view class="cu-item">
+            <navigator class="content" hover-class="none" url="/pages/mine/admin/addDailyLaw/addDailyLaw" open-type="navigate">
+                <view class="cuIcon-cascades text-yellow"></view>
+                <text>每日普法</text>
+            </navigator>
+        </view>
+        <view class="cu-item">
+            <navigator class="content" hover-class="none" url="/pages/information/addInformation/addInformation" >
+                <view class="cuIcon-cascades text-yellow"></view>
+                <text>信息发布</text>
+            </navigator>
+        </view>
+        <view class="cu-item">
+            <navigator class="content" hover-class="none" url="/pages/information/mgInformation/mgInformation" >
+                <view class="cuIcon-cascades text-yellow"></view>
+                <text>信息管理</text>
             </navigator>
         </view>
     </view>
-
-
-
-
-    <view class="cu-list menu card-menu">
-        <view class="cu-bar bg solid-bottom padding-left-xs">
-            <view class="action">
-                <text class="cuIcon-title text-orange"></text>我的服务
-            </view>
-        </view>
-        <view class="cu-list grid col-4 border-radius-20">
-            <view class="cu-item">
-                <navigator class="content" hover-class="none" url="/pages/mine/service/news/news" open-type="navigate">
-                    <view class="cuIcon-radioboxfill text-blue"></view>
-                    <text>乡镇圈</text>
-                </navigator>
-            </view>
-            <view class="cu-item">
-                <navigator class="content" hover-class="none" url="/pages/dailyLaw/history/history" open-type="navigate">
-                    <view class="cuIcon-timefill text-brown"></view>
-                    <text>每日普法</text>
-                </navigator>
-            </view>
-        </view>
-    </view>
-
-    <view class="cu-list menu card-menu">
-        <view class="cu-bar bg solid-bottom padding-left-xs">
-            <view class="action">
-                <text class="cuIcon-title text-orange"></text>管理员功能
-            </view>
-        </view>
-        <view class="cu-list grid col-4 border-radius-20">
-            <view class="cu-item">
-                <navigator class="content" hover-class="none" url="/pages/mine/admin/addDailyLaw/addDailyLaw" open-type="navigate">
-                    <view class="cuIcon-cascades text-yellow"></view>
-                    <text>每日普法</text>
-                </navigator>
-            </view>
-            <view class="cu-item">
-                <navigator class="content" hover-class="none" url="/pages/information/addInformation/addInformation" >
-                    <view class="cuIcon-cascades text-yellow"></view>
-                    <text>信息发布</text>
-                </navigator>
-            </view>
-        </view>
-    </view>
-
-    <view class="cu-list menu card-menu">
-        <view class="cu-bar bg solid-bottom padding-left-xs">
-            <view class="action">
-                <text class="cuIcon-title text-orange"></text>帮助
-            </view>
-        </view>
-        <view class="cu-list grid col-4 border-radius-20">
-            <view class="cu-item">
-                <navigator class="content" hover-class="none" url="/pages/mine/help/aboutUs/aboutUs" open-type="navigate">
-                    <view class="cuIcon-edit text-blue"></view>
-                    <text>关于我们</text>
-                </navigator>
-            </view>
-            <view class="cu-item">
-                <navigator class="content" hover-class="none" url="/pages/mine/help/funIntroduction/funIntroduction" open-type="navigate">
-                    <view class="cuIcon-news text-orange"></view>
-                    <text>功能介绍</text>
-                </navigator>
-            </view>
-            <view class="cu-item">
-                <button open-type="feedback">
-                    <view class="cuIcon-emoji text-black"></view>
-                    <text>反馈</text>
-                </button>
-            </view>
-            <view class="cu-item">
-                <button open-type="contact" bindcontact="handleContact">
-                    <view class="cuIcon-weixin text-olive"></view>
-                    <text>联系客服</text>
-                </button>
-            </view>
-        </view>
-    </view>
-
 </view>
+

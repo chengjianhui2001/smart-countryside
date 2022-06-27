@@ -2,10 +2,4 @@
 @import "colorui/icon.wxss";
 @import "style/animate.wxss";
 
-#main {
-    height: 100vh;
-    width: 100vw;
-    background-color: #fae3cb;
-}
-
 

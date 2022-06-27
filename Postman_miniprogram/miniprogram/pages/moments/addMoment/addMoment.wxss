@@ -1,0 +1,14 @@
+button {
+    width: 200rpx;
+    height: 100rpx;
+    font-family: inherit;
+    background: royalblue;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.2s;
+}

@@ -15,7 +15,11 @@ Page({
       title:'数据加载中...'
     })
     this.getCulturalData(res=>{
-      wx.hideLoading()
+      this.getActivityData(res=>{
+        this.getInformData(res=>{
+          wx.hideLoading()
+        })
+      })
     })
   },
 

@@ -1,0 +1,17 @@
+.right{
+    height: inherit;
+    width: 120px;
+    color: white;
+    display: flex;
+}
+.right .item{
+    width: 60px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/deep/ .van-cell {
+    touch-action: pan-y;
+}

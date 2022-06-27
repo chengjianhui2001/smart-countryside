@@ -1,20 +1,15 @@
 {
   "pages": [
+    "pages/home/home",
     "pages/first/first",
     "pages/function/function",
     "pages/mine/mine",
     "pages/mine/user/userInfo/userInfo",
     "pages/mine/user/editUserInfo/editUserInfo",
-    "pages/mine/service/news/news",
-    "pages/mine/admin/addDailyLaw/addDailyLaw",
+    "pages/dailyLaw/addDailyLaw/addDailyLaw",
     "pages/mine/help/aboutUs/aboutUs",
     "pages/mine/help/funIntroduction/funIntroduction",
-    "pages/town/town",
-    "pages/town/map/map",
     "pages/moments/moments",
-    "pages/moments/addNews/addNews",
-    "pages/moments/detailNews/detailNews",
-    "pages/moments/updateNews/updateNews",
     "pages/dailyLaw/dailyLaw",
     "pages/dailyLaw/makeAnswer/makeAnswer",
     "pages/dailyLaw/history/history",
@@ -22,7 +17,14 @@
     "pages/dailyLaw/details/details",
     "pages/information/information",
     "pages/information/addInformation/addInformation",
-    "pages/information/detailInformation/detailInformation"
+    "pages/information/detailInformation/detailInformation",
+    "pages/information/mgInformation/mgInformation",
+    "pages/information/editInformation/editInformation",
+    "pages/test/test",
+    "pages/moments/addMoment/addMoment",
+    "pages/moments/mgMoment/mgMoment",
+    "pages/moments/updateMoment/updateMoment",
+    "pages/moments/detailMoment/detailMoment"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -45,26 +47,20 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/information/information",
+        "pagePath": "pages/home/home",
         "text": "首页",
-        "iconPath": "images/tabBar/function.png",
-        "selectedIconPath": "images/tabBar/functionSelected.png"
-      },
-      {
-        "pagePath": "pages/first/first",
-        "text": "首页",
-        "iconPath": "images/tabBar/function.png",
-        "selectedIconPath": "images/tabBar/functionSelected.png"
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/homes.png"
       },
       {
         "pagePath": "pages/mine/mine",
         "text": "我的",
-        "iconPath": "images/tabBar/mine.png",
-        "selectedIconPath": "images/tabBar/mineSelected.png"
+        "iconPath": "images/mine.png",
+        "selectedIconPath": "images/mines.png"
       }
     ],
-    "selectedColor": "#1296db",
-    "backgroundColor": "#fae3cb"
+    "selectedColor": "#000000",
+    "color": "#cdcdcd"
   },
   "plugins": {
     "chooseLocation": {

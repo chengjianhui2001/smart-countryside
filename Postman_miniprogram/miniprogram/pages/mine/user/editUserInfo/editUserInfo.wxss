@@ -1,22 +1,3 @@
-/* pages/editUserInfo/editUserInfo.wxss */
-#editUserInfo{
-    width: 100vw;
-    height: 100vh;
-    background-color: #fae3cb;
-    display: flex;
-    justify-content: center;
-}
-
-.main {
-    width: 90%;
-}
-
-#top {
-    border-top-right-radius: 20rpx;
-    border-top-left-radius: 20rpx;
-}
-
-#bottom {
-    border-bottom-right-radius: 20rpx;
-    border-bottom-left-radius: 20rpx;
+.cu-form-group+.cu-form-group {
+    border-top: none;
 }

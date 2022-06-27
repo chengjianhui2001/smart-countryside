@@ -1,0 +1,47 @@
+<!--pages/contentMg/news/news.wxml-->
+<view id="main">
+    <block wx:for="{{list}}" wx:key="id" >
+        <van-swipe-cell right-width="{{ 120 }}">
+            <van-cell-group>
+                <view class="cu-card article no-card sm-border">
+                    <view class="cu-item shadow">
+                        <view class="flex justify-between margin-top">
+                            <view class="flex">
+                                <view class="cu-avatar round  margin-left" style="background-image:url({{item.userInfo[0].avatarUrl}});">
+                                    <view class="cu-tag badge {{item.userInfo[0].gender===1?'cuIcon-male bg-blue':'cuIcon-female bg-pink'}}"></view>
+                                </view>
+                                <view class="flex-direction content justify-around">
+                                    <view class="text-sm">{{item.userInfo[0].nickName}}</view>
+                                    <view class="text-gray text-xs" >{{item.create_time}}</view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="title">
+                            <view class="text-cut">{{item.title}}</view>
+                        </view>
+                        <view class="content">
+                            <image src="{{item.coverId}}" mode="aspectFill"></image>
+                            <view class="desc">
+                                <view class="text-content">{{item.introduction}}</view>
+                                <view>
+                                    <block wx:for="{{1}}" wx:key="id">
+                                        <view class="cu-tag light sm round bg-blue">{{item.type==='cultural'?'文化':item.type==='activity'?'活动':'通告'}}</view>
+                                    </block>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </van-cell-group>
+            <view slot="right" class="right">
+                <view class="bg-blue item" bindtap="handleUpdate" data-info="{{item}}">编辑</view>
+                <view class="bg-red item"
+                      bindtap="handleDelete"
+                      data-id="{{item._id}}"
+                      data-cover_id="{{item.coverId}}"
+                      data-file_id="{{item.fileId}}"
+                >删除</view>
+            </view>
+        </van-swipe-cell>
+    </block>
+</view>

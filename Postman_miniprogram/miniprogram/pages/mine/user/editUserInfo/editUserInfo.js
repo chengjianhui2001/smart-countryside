@@ -95,36 +95,43 @@ Page({
   //修改用户信息
   handleEdit(){
     let _id = wx.getStorageSync('userInfo')._id
-    wx.showLoading({
-      title:'提交中...'
-    })
-    user.doc(_id).update({
-      data: {
-        nickName:this.data.nickName,
-        gender:parseInt(this.data.gender),
-        phoneNumber:this.data.phoneNumber,
-        province:this.data.region[0],
-        city:this.data.region[1],
-        district:this.data.region[2],
-        detailAddress:this.data.detailAddress,
-      },
-      success:res => {
-        if (res.errMsg === 'document.update:ok') {
-          user.doc(_id).get({
-            success: res => {
-              console.log('提交编辑成功后根据用户id查询编辑后的用户信息',res)
-              try {
-                wx.setStorageSync('userInfo', res.data)
-                wx.navigateBack({
-                  success:result => {
-                    wx.hideLoading();
-                  }
-                })
-              } catch (e) { console.log(e) }
-            }
-          })
+    if (this.data.nickName&&this.data.gender&&this.data.phoneNumber&&this.data.region&&this.data.detailAddress){
+      wx.showLoading({
+        title:'提交中...'
+      })
+      user.doc(_id).update({
+        data: {
+          nickName:this.data.nickName,
+          gender:parseInt(this.data.gender),
+          phoneNumber:this.data.phoneNumber,
+          province:this.data.region[0],
+          city:this.data.region[1],
+          district:this.data.region[2],
+          detailAddress:this.data.detailAddress,
+        },
+        success:res => {
+          if (res.errMsg === 'document.update:ok') {
+            user.doc(_id).get({
+              success: res => {
+                console.log('提交编辑成功后根据用户id查询编辑后的用户信息',res)
+                try {
+                  wx.setStorageSync('userInfo', res.data)
+                  wx.navigateBack({
+                    success:result => {
+                      wx.hideLoading();
+                      wx.showToast({
+                        title:'编辑成功'
+                      })
+                    }
+                  })
+                } catch (e) { console.log(e) }
+              }
+            })
+          }
         }
-      }
-    })
+      })
+    }else{
+      wx.showToast({title:'请将数据填写完整！',icon:"error"})
+    }
   }
 })

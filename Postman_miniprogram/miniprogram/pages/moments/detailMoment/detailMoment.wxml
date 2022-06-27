@@ -1,0 +1,33 @@
+<view>
+    <view class="cu-card dynamic no-card">
+        <view class="cu-item shadow">
+            <view class="cu-list menu-avatar">
+                <view class="cu-item">
+                    <view class="cu-avatar round lg" style="background-image:url({{moment.user[0].avatarUrl}});">
+                        <view class="cu-tag badge {{moment.user[0].gender===1?'cuIcon-male bg-blue':'cuIcon-female bg-pink'}}"></view>
+                    </view>
+                    <view class="content flex-sub">
+                        <view>{{moment.user[0].nickName}}</view>
+                        <view class="text-gray text-sm flex justify-between">
+                            {{moment.create_time}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="text-content">
+                {{moment.content}}
+            </view>
+            <view class="grid flex-sub padding-lr {{item.fileIds.length===1?'col-1':item.fileIds.length===2?'col-2':'col-3'}} grid-square">
+                <block wx:for="{{moment.fileIds}}" wx:for-item="url" wx:key="id">
+                    <view  class="bg-img">
+                        <image src="{{url}}"></image>
+                    </view>
+                </block>
+            </view>
+            <!-- <view class="text-gray text-sm text-right padding">
+                <text class="cuIcon-appreciatefill margin-lr-xs"></text>{{moment.like}}
+                <text class="cuIcon-cascades margin-lr-xs"></text> {{moment.collection}}
+            </view> -->
+        </view>
+    </view>
+</view>

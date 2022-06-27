@@ -1,4 +1,5 @@
 // pages/home/home.js
+const utils = require('../../utils/index')
 const db = wx.cloud.database()
 const news = db.collection('news')
 const _ = db.command
@@ -9,41 +10,32 @@ Page({
    * 页面的初始数据
    */
   data: {
-    newsInfos:[],
+    list:[],
     inputValue:"",
   },
 
   /**
    * 渲染页面数据*/
   onShow:function (){
-    this.getData()
+    this.getMoment(res=>{})
   },
 
-  /**
-   * 无条件查询*/
-  getData:function(callback){
-    if (!callback){
-      callback = res=>{}
-    }
-    wx.showLoading({
-      title:'数据加载中'
-    })
+  getMoment(callback){
     wx.cloud.callFunction({
-      name:'getNewsData',
+      name:'getMoments',
       success:res => {
-        // let oldNewsInfos = this.data.newsInfos
         this.setData({
-          // newsInfos:oldNewsInfos.concat(res.result),
-          newsInfos:res.result.list
+          list:res.result.list
         },res=>{
-          // this.pageData.skip = this.pageData.skip + 100
-          wx.hideLoading()
+          for (let index in this.data.list){
+            this.setData({
+              [`list[${index}].create_time`]:utils.timeFormat(this.data.list[index].create_time)
+            })
+          }
           callback()
         })
       },
-      fail:res=>{
-        console.log(res)
-      }
+      fail:err => { console.log(err) }
     })
   },
 
@@ -51,7 +43,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh:function () {
-    this.getData(res=>{
+    this.getMoment(res=>{
       wx.stopPullDownRefresh()
       this.setData({
         inputValue:""

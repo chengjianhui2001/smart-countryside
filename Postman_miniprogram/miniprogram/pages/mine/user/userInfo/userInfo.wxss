@@ -1,11 +1,7 @@
-/* pages/userInfo/userInfo.wxss */
-#userInfo {
-    width: 100vw;
-    height: 100vh;
-    background-color: #fae3cb;
-
+.card {
+    border-radius: 20rpx;
 }
 
-.main {
-    width: 90%;
+.no-border {
+    border: none;
 }

@@ -20,9 +20,9 @@
                                             <view class="text-grey">{{item.userInfo[0].nickName}}</view>
                                             <view class="text-gray text-sm flex justify-between">
                                                 <view class="text-cut text-black" style="width:400rpx">简介:{{item.introduction}}</view>
-                                                <view class="text-gray text-sm">
+                                                <!-- <view class="text-gray text-sm">
                                                     <text class="cuIcon-favor margin-lr-xs"></text> 30
-                                                </view>
+                                                </view> -->
                                             </view>
                                         </view>
                                     </view>
@@ -53,9 +53,9 @@
                                             <view class="text-grey">{{item.userInfo[0].nickName}}</view>
                                             <view class="text-gray text-sm flex justify-between">
                                                 <view class="text-cut text-black" style="width:400rpx">简介:{{item.introduction}}</view>
-                                                <view class="text-gray text-sm">
+                                                <!-- <view class="text-gray text-sm">
                                                     <text class="cuIcon-favor margin-lr-xs"></text> 30
-                                                </view>
+                                                </view> -->
                                             </view>
                                         </view>
                                     </view>
@@ -86,9 +86,9 @@
                                             <view class="text-grey">{{item.userInfo[0].nickName}}</view>
                                             <view class="text-gray text-sm flex justify-between">
                                                 <view class="text-cut text-black" style="width:400rpx">简介:{{item.introduction}}</view>
-                                                <view class="text-gray text-sm">
+                                                <!-- <view class="text-gray text-sm">
                                                     <text class="cuIcon-favor margin-lr-xs"></text> 30
-                                                </view>
+                                                </view> -->
                                             </view>
                                         </view>
                                     </view>

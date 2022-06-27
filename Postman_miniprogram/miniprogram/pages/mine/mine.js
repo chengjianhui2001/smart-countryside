@@ -9,6 +9,17 @@ Page({
    */
   data: {
     userInfo:null,
+    avatarUrl:null,
+  },
+
+  onLoad(){
+    this.getAvatar()
+  },
+
+  toUserInfo(){
+    wx.navigateTo({
+      url:'/pages/mine/user/userInfo/userInfo'
+    })
   },
 
   //登录函数
@@ -86,7 +97,26 @@ Page({
         console.log(res)
       }
     })
-  }
+  },
 
-
+  //加载默认头像
+  getAvatar(){
+    let avatarUrl = wx.getStorageSync('avatarUrl')
+    if (avatarUrl){
+      this.setData({
+        avatarUrl:avatarUrl
+      })
+    }else{
+      wx.cloud.getTempFileURL({
+        fileList:['cloud://cloud1-5g1oimlb11d4eb78.636c-cloud1-5g1oimlb11d4eb78-1312470390/static/avatar.png'],
+        success:res=>{
+          let avatarUrl = res.fileList[0].tempFileURL
+          this.setData({
+            avatarUrl:avatarUrl
+          })
+          wx.setStorageSync('avatarUrl',avatarUrl)
+        }
+      })
+    }
+  },
 })

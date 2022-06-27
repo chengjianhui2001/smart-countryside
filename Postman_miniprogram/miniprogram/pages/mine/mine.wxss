@@ -1,50 +1,56 @@
 /* pages/mine/mine.wxss */
-#mine {
-  height: 100vh;
+.top-bg {
+  position: relative;
+  display: flex;
+  justify-content: center;
   width: 100vw;
-  background-color: #fae3cb;
+  height: 400rpx;
+  background-color: #72D799;
+  border-bottom-left-radius: 60rpx;
+  border-bottom-right-radius: 60rpx;
 }
 
-.right-icon {
-  width: 100rpx;
+.avatar {
+  z-index: 100;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: -100rpx;
+  width: 200rpx;
+  height: 200rpx;
+  background-color: white;
+  border-radius: 200rpx;
+}
+
+.size {
+  width: 180rpx;
+  height: 180rpx;
+}
+
+.background-text {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 180rpx;
+  background-color: #ccc;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  font-size: 40rpx;
+  justify-content: center;
+  font-size: 36rpx;
 }
 
-
-.user-card {
-  display: flex;
-  justify-content: space-between;
-}
-
-.avatar-box {
-  display: flex;
-}
-
-.phoneNumber {
-  padding-top: 15rpx;
-  padding-bottom: 0;
-}
-
-.border-radius-20 {
+.br {
   border-radius: 20rpx;
 }
 
-.nickname {
-  text-align: left;
-  padding-left: 30rpx;
-}
-
-.br-r {
-  border-radius: 20rpx;
+.no-padding {
+  padding: 0 !important;
 }
 
 button::after {
-  border: none;
-  background-color: none;
-}
+   border: none;
+   background-color: none;
+ }
 
 button{
   width: 100%;
@@ -59,3 +65,4 @@ button::after{
   border: none;
   border-radius: 0;
 }
+

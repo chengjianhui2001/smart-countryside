@@ -147,23 +147,22 @@ Page({
 
     //发布
     release(){
-        wx.showLoading({
-            title:'发布中...'
-        })
         let user_id = wx.getStorageSync('userInfo')._id
-        let data = {
-            user_id:user_id,
-            title:this.data.title,
-            introduction:this.data.introduction,
-            type:this.data.type,
-            coverId:this.fileId_img,
-            fileId: this.fileId_file,
-            create_time: new Date()
-        }
         if (this.data.title && this.data.introduction && this.data.type && this.fileId_file && this.fileId_img){
-            console.log(data)
+            wx.showLoading({
+                title:'发布中...'
+            })
             db.collection('activity').add({
-                data: data,
+                data: {
+                    user_id:user_id,
+                    title:this.data.title,
+                    introduction:this.data.introduction,
+                    type:this.data.type,
+                    coverId:this.fileId_img,
+                    fileId: this.fileId_file,
+                    filename: this.data.file.name,
+                    create_time: new Date()
+                },
                 success: res => {
                     this.fileId_img = null
                     this.fileId_file = null

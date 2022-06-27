@@ -7,7 +7,7 @@
             </view>
             <view class="cu-form-group">
                 <view class="title">简介</view>
-                <input model:value="{{introduction}}" placeholder="请输入简介" bind:input="onChange"></input>
+                <textarea maxlength="-1" model:value="{{introduction}}" placeholder="请输入简介" bind:input="onChange"></textarea>
             </view>
 <!--            <view class="cu-form-group">-->
 <!--                <view class="title">类型</view>-->

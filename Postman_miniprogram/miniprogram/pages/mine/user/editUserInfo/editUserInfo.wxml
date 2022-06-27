@@ -1,35 +1,32 @@
-<!--pages/editUserInfo/editUserInfo.wxml-->
-<view id="editUserInfo">
-    <view class="main margin-top-lg">
-        <view class="cu-form-group top" id="top">
-            <view class="title">用户昵称</view>
-            <input type="nickname" model:value="{{nickName}}" bind:input="printInput" placeholder="请输入昵称" maxlength="20"></input>
-        </view>
+<view class="padding">
+    <view class="cu-form-group" style="border-top-right-radius: 20rpx;border-top-left-radius: 20rpx;">
+        <view class="title">用户昵称</view>
+        <input type="nickname" model:value="{{nickName}}" bind:input="printInput" placeholder="请输入昵称" maxlength="20"></input>
+    </view>
+    <view class="cu-form-group">
+        <view class="title">性别</view>
         <view class="cu-form-group">
-            <view class="title">性别</view>
-            <view class="cu-form-group">
-                <view class="margin-right-xs">{{gender===1?'男':'女'}}</view>
-                <switch  class="switch-sex" checked="{{checked}}" bindchange="SwitchChange"></switch>
+            <view class="margin-right-xs">{{gender===1?'男':'女'}}</view>
+            <switch  class="switch-sex" checked="{{checked}}" bindchange="SwitchChange"></switch>
+        </view>
+    </view>
+    <view class="cu-form-group">
+        <view class="title">手机号码</view>
+        <input type="number" model:value="{{phoneNumber}}" bind:input="printInput" placeholder="请输入手机号" maxlength="11"></input>
+    </view>
+    <view class="cu-form-group">
+        <view class="title">地址选择</view>
+        <picker mode="region" bindchange="RegionChange" value="{{region}}">
+            <view class="picker">
+                {{region[0]}}，{{region[1]}}，{{region[2]}}
             </view>
-        </view>
-        <view class="cu-form-group">
-            <view class="title">手机号码</view>
-            <input type="number" model:value="{{phoneNumber}}" bind:input="printInput" placeholder="请输入手机号" maxlength="11"></input>
-        </view>
-        <view class="cu-form-group">
-            <view class="title">地址选择</view>
-            <picker mode="region" bindchange="RegionChange" value="{{region}}">
-                <view class="picker">
-                    {{region[0]}}，{{region[1]}}，{{region[2]}}
-                </view>
-            </picker>
-        </view>
-        <view class="cu-form-group" id="bottom">
-            <view class="title">详细地址</view>
-            <input model:value="{{detailAddress}}" bind:input="printInput" placeholder="请输入详细地址" maxlength="50"></input>
-        </view>
-        <view class="flex flex-direction margin-top-lg">
-            <button class="cu-btn bg-blue lg" bindtap="handleEdit">提交</button>
-        </view>
+        </picker>
+    </view>
+    <view class="cu-form-group" style="border-bottom-right-radius: 20rpx;border-bottom-left-radius: 20rpx;">
+        <view class="title">详细地址</view>
+        <input model:value="{{detailAddress}}" bind:input="printInput" placeholder="请输入详细地址" maxlength="50"></input>
+    </view>
+    <view class="flex flex-direction margin-top-lg">
+        <button class="cu-btn bg-blue lg" bindtap="handleEdit">提交</button>
     </view>
 </view>

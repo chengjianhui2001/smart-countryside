@@ -9,3 +9,11 @@
   height: 50rpx;
   border-radius: 120px;
 }
+
+.text-content {
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
