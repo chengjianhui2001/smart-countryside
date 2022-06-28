@@ -1,33 +1,33 @@
-<view >
-    <form class="form">
-        <view class="cu-form-group no-border">
-            <textarea maxlength="-1"
-                      model:value="{{content}}"
-                      placeholder="分享新鲜事..."
-                      auto-focus
-                      auto-height="{{true}}"
-                      show-confirm-bar
-                      confirm-type="done"
-                      bindconfirm="doneConfirm"
-                      bind:input="handledContentInput"></textarea>
-        </view>
-        <view class="cu-form-group no-border">
-            <view class="grid col-3 grid-square flex-sub">
-                <view class="bg-img" wx:for="{{imgList}}" wx:key="index" bindtap="ViewImage" data-url="{{imgList[index]}}">
-                    <image src='{{imgList[index]}}' mode='aspectFill'></image>
-                    <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
-                        <text class="cuIcon-close"></text>
-                    </view>
-                </view>
-                <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
-                    <text class="cuIcon-cameraadd"></text>
+<form class="form">
+    <view class="cu-form-group">
+        <textarea maxlength="-1"
+                  model:value="{{content}}"
+                  placeholder="分享新鲜事..."
+                  auto-focus
+                  auto-height="{{true}}"
+                  show-confirm-bar
+                  confirm-type="done"
+                  bindconfirm="doneConfirm"
+                  bind:input="handledContentInput"></textarea>
+    </view>
+    <view class="cu-form-group">
+        <view class="grid col-3 grid-square flex-sub">
+            <view class="bg-img" wx:for="{{imgList}}" wx:key="index" bindtap="viewImage" data-url="{{imgList[index]}}">
+                <image src='{{imgList[index]}}' mode='aspectFill'></image>
+                <view class="cu-tag bg-red" catchtap="delImg" data-index="{{index}}">
+                    <text class="cuIcon-close"></text>
                 </view>
             </view>
+            <view class="solids" bindtap="chooseImage" wx:if="{{imgList.length<4}}">
+                <text class="cuIcon-cameraadd"></text>
+            </view>
         </view>
-        <view class="flex-sub justify-center margin-top-sm">
+    </view>
+    <view class="padding flex justify-end">
+        <view>
             <button bind:tap="handlePost">
                 <text>发送</text>
             </button>
         </view>
-    </form>
-</view>
+    </view>
+</form>

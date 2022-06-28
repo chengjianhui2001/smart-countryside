@@ -68,6 +68,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/function/function",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

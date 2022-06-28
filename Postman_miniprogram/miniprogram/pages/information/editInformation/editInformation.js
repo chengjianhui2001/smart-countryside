@@ -137,7 +137,32 @@ Page({
     //发布
     release(){
         let user_id = wx.getStorageSync('userInfo')._id
-        if (this.data.title && this.data.introduction && this.data.type && this.fileId_file && this.fileId_img){
+        if (!this.data.title){
+            wx.showToast({
+                title:'标题不能为空',
+                icon:"none"
+            })
+        }else if (!this.data.introduction){
+            wx.showToast({
+                title:'简介不能为空',
+                icon:"none"
+            })
+        }else if (!this.data.type){
+            wx.showToast({
+                title:'请选择一种类型',
+                icon:"none"
+            })
+        }else if (!this.fileId_img){
+            wx.showToast({
+                title:'请上传封面',
+                icon:"none"
+            })
+        }else if (!this.fileId_file){
+            wx.showToast({
+                title:'请上传md文件',
+                icon:"none"
+            })
+        }else{
             wx.showLoading({
                 title:'提交修改中...'
             })
@@ -166,11 +191,6 @@ Page({
                     })
                 },
                 fail:res => console.log(res)
-            })
-        }else{
-            wx.showToast({
-                title:'请将信息填写完成',
-                icon:'error'
             })
         }
     },

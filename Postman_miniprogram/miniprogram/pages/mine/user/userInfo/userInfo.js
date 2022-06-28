@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo:null
+    userInfo:null,
+    adminPattern:null,
   },
 
   /**
@@ -22,6 +23,62 @@ Page({
         userInfo:userInfo
       })
     }
+    wx.getStorage({
+      key:'adminPattern',
+      encrypt:true,
+      success:res=>{
+        this.setData({
+          adminPattern:res.data
+        })
+      }
+    })
+  },
+  //切换管理员模式
+  changeStatus(){
+    wx.showLoading({
+      title:'切换中...'
+    })
+    wx.setStorage({
+      key:'adminPattern',
+      data:true,
+      encrypt:true,
+      success:res => {
+        wx.hideLoading({
+          success:res1=>{
+            wx.navigateBack({
+              success:()=>{
+                wx.showToast({
+                  title:'切换成功'
+                })
+              }
+            })
+          }
+        })
+      }
+    })
+  },
+  changeStatus2(){
+    wx.showLoading({
+      title:'切换中...'
+    })
+    wx.setStorage({
+      key:'adminPattern',
+      data:false,
+      encrypt:true,
+      success:res => {
+        wx.hideLoading({
+          success:res1=>{
+            wx.navigateBack({
+              success:()=>{
+                wx.showToast({
+                  title:'切换成功'
+                })
+              }
+            })
+          }
+        })
+      }
+    })
   },
   //退出
   exit(){
@@ -31,6 +88,11 @@ Page({
       success:res=>{
         if (res.confirm){
           wx.removeStorageSync('userInfo')
+          wx.setStorage({
+            key:'adminPattern',
+            data:false,
+            encrypt:true
+          })
           wx.switchTab({
             url:'/pages/mine/mine'
           })

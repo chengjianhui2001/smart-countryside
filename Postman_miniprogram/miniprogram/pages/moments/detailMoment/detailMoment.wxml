@@ -19,15 +19,21 @@
             </view>
             <view class="grid flex-sub padding-lr {{item.fileIds.length===1?'col-1':item.fileIds.length===2?'col-2':'col-3'}} grid-square">
                 <block wx:for="{{moment.fileIds}}" wx:for-item="url" wx:key="id">
-                    <view  class="bg-img">
+                    <view  class="bg-img" bind:tap="viewImages" data-urls="{{moment.fileIds}}" data-url="{{url}}">
                         <image src="{{url}}"></image>
                     </view>
                 </block>
             </view>
-            <!-- <view class="text-gray text-sm text-right padding">
-                <text class="cuIcon-appreciatefill margin-lr-xs"></text>{{moment.like}}
-                <text class="cuIcon-cascades margin-lr-xs"></text> {{moment.collection}}
-            </view> -->
+             <view class="flex justify-end padding">
+                 <view class="margin-right-lg">
+                     <button hover-class="none" open-type="share">
+                         <view class="flex">
+                             <view class="cuIcon-weixin text-green"></view>
+                             <text class="text-gray text-df">分享给微信好友</text>
+                         </view>
+                     </button>
+                 </view>
+            </view>
         </view>
     </view>
 </view>

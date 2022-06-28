@@ -1,69 +1,72 @@
-<!--pages/home/home.wxml-->
-<view id="home">
-    <view class="cu-bar bg-white search fixed">
+<view wx:if="{{isLoading}}" class="loading">
+    <view class="spinner"></view>
+</view>
+
+<van-sticky>
+    <view class="cu-bar bg-gray search">
         <view class="search-form round">
             <text class="cuIcon-search"></text>
-            <input type="text" model:value="{{inputValue}}" placeholder="输入搜索的关键词" confirm-type="search" bindinput="inputChange"
+            <input type="text" model:value="{{value}}" placeholder="输入搜索的关键词" confirm-type="search" bindinput="inputChange"
                    bindconfirm="search"></input>
         </view>
         <view class="action">
-            <button class="cu-btn bg-gradual-green shadow-blur round" bindtap="search">搜索</button>
+            <button wx:if="{{!isCancel}}" class="animated fadeInRight cu-btn bg-green shadow-blur round" bindtap="handleSearch">搜索</button>
+            <button wx:else class="animated fadeInRight cu-btn bg-blue shadow-blur round" bindtap="handleCancel">取消</button>
         </view>
     </view>
-    <view style="width:100vw;height:100rpx"></view>
-    <view class="cu-bar bg-white solid-bottom">
-        <view class='action'>
-            <text class='cuIcon-titles text-orange '></text>乡镇圈
-        </view>
-        <view class="flex">
-            <view class='action flex align-center'>
-                <view class="text-sm margin-right-xs">{{isCard?'正常':'卡片'}}</view>
-                <switch class='xs' checked='{{isCard}}' bindchange='isCard'></switch>
-            </view>
-            <view class="action text-gray add-action margin-left-xs">
-                <navigator url="/pages/moments/addMoment/addMoment" hover-class="none">
-                    <button class="cu-btn bg-green shadow" id="turnRound">
-                        <text class="cuIcon-add  text-white"></text>
-                    </button>
-                </navigator>
-            </view>
-        </view>
-    </view>
+</van-sticky>
 
-    <block wx:for="{{list}}" wx:key="id">
-        <view class="cu-card dynamic no-card">
-            <view class="cu-item shadow">
-                <view class="cu-list menu-avatar">
-                    <view class="cu-item">
-                        <view class="cu-avatar round lg" style="background-image:url({{item.user[0].avatarUrl}});">
-                            <view class="cu-tag badge {{item.user[0].gender===1?'cuIcon-male bg-blue':'cuIcon-female bg-pink'}}"></view>
-                        </view>
-                        <view class="content flex-sub">
-                            <view>{{item.user[0].nickName}}</view>
-                            <view class="text-gray text-sm flex justify-between">
-                                {{item.create_time}}
-                            </view>
+<view class="cu-bar">
+    <view class='action'>
+        <text class='cuIcon-titles text-blue'></text>时刻
+    </view>
+    <view class="flex">
+        <view class='action flex align-center'>
+            <view class="text-sm margin-right-xs">{{isCard?'正常':'卡片'}}</view>
+            <switch class='xs' checked='{{isCard}}' bindchange='isCard'></switch>
+        </view>
+        <view class="action text-gray add-action margin-left-xs">
+            <button class="cu-btn bg-green shadow" id="turnRound" bind:tap="toAdd">
+                <text class="cuIcon-add  text-white"></text>
+            </button>
+        </view>
+    </view>
+</view>
+
+<van-empty image="search" wx:if="{{list.length===0}}" description="暂时没有时刻哦~" />
+
+<block wx:for="{{list}}" wx:key="id">
+    <view class="cu-card dynamic {{isCard?'no-card':''}}">
+        <view class="cu-item shadow">
+            <view class="cu-list menu-avatar">
+                <view class="cu-item">
+                    <view class="cu-avatar round lg" style="background-image:url({{item.user[0].avatarUrl}});">
+                        <view class="cu-tag badge {{item.user[0].gender===1?'cuIcon-male bg-blue':'cuIcon-female bg-pink'}}"></view>
+                    </view>
+                    <view class="content flex-sub">
+                        <view>{{item.user[0].nickName}}</view>
+                        <view class="text-gray text-sm flex justify-between">
+                            {{item.create_time}}
                         </view>
                     </view>
                 </view>
-                <view class="text-content">
-                    {{item.content}}
-                </view>
-                <view class="grid flex-sub padding-lr {{item.fileIds.length===1?'col-1':item.fileIds.length===2?'col-2':'col-3'}} grid-square">
-                    <block wx:for="{{item.fileIds}}" wx:for-item="url" wx:key="id">
-                        <view  class="bg-img">
-                            <image src="{{url}}"></image>
-                        </view>
-                    </block>
-                </view>
-                <!-- <view class="text-gray text-sm text-right padding">
-                    <text class="cuIcon-appreciatefill margin-lr-xs"></text>{{item.like}}
-                    <text class="cuIcon-cascades margin-lr-xs"></text> {{item.collection}}
-                </view> -->
             </view>
+            <view class="text-content">
+                {{item.content}}
+            </view>
+            <view class="grid flex-sub padding-lr {{item.fileIds.length===1?'col-1':item.fileIds.length===2?'col-2':'col-3'}} grid-square">
+                <block wx:for="{{item.fileIds}}" wx:for-item="url" wx:key="id">
+                    <view  class="bg-img" bind:tap="viewImages" data-urls="{{item.fileIds}}" data-url="{{url}}">
+                        <image src="{{url}}"></image>
+                    </view>
+                </block>
+            </view>
+             <view class="text-gray text-sm text-right padding" bind:tap="toDetail" data-detailInfo="{{item}}">
+                点我查看详情<text class="cuIcon-right margin-lr-xs"></text>
+             </view>
         </view>
-    </block>
+    </view>
+</block>
 
-</view>
 
 

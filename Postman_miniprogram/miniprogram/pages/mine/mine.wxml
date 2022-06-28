@@ -10,7 +10,7 @@
     </view>
 </view>
 
-<view class="padding" style="margin-top:100rpx">
+<view wx:if="{{!adminPattern}}" class="padding" style="margin-top:100rpx">
     <view class="cu-bar bg solid-bottom padding-left-xs">
         <view class="action">
             <text class="cuIcon-title text-green"></text>我的
@@ -44,7 +44,7 @@
     </view>
 </view>
 
-<view class="padding">
+<view wx:else class="padding" style="margin-top:100rpx">
     <view class="cu-bar bg solid-bottom padding-left-xs">
         <view class="action">
             <text class="cuIcon-title text-blue"></text>管理员
@@ -52,14 +52,14 @@
     </view>
     <view class="cu-list grid col-5 no-border no-padding br">
         <view class="cu-item">
-            <navigator class="content" hover-class="none" url="/pages/mine/admin/addDailyLaw/addDailyLaw" open-type="navigate">
-                <view class="cuIcon-cascades text-yellow"></view>
+            <navigator class="content" hover-class="none" url="/pages/dailyLaw/addDailyLaw/addDailyLaw" open-type="navigate">
+                <view class="cuIcon-send text-olive"></view>
                 <text>每日普法</text>
             </navigator>
         </view>
         <view class="cu-item">
             <navigator class="content" hover-class="none" url="/pages/information/addInformation/addInformation" >
-                <view class="cuIcon-cascades text-yellow"></view>
+                <view class="cuIcon-album text-cyan"></view>
                 <text>信息发布</text>
             </navigator>
         </view>

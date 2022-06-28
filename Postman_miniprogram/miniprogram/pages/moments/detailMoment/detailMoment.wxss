@@ -1,0 +1,19 @@
+button{
+    width: 100%;
+    background-color: white;
+    border: none;
+    padding: 0;
+    margin: 0;
+    line-height: normal;
+}
+
+button::after {
+    border: none;
+    background-color: transparent;
+}
+
+/* 去除边框 */
+button::after{
+    border: none;
+    border-radius: 0;
+}

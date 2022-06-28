@@ -3,16 +3,16 @@ const db = wx.cloud.database()
 
 Page({
   data: {
-    list:[]
+    list:[],
+    isLoading:true
   },
 
   //初始化页面
   onShow:function (options) {
-    wx.showLoading({
-      title:'数据加载中...'
-    })
     this.getData(res=>{
-      wx.hideLoading()
+      this.setData({
+        isLoading:false
+      })
     })
   },
 

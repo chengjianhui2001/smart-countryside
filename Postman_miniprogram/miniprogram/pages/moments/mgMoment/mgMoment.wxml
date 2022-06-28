@@ -1,31 +1,35 @@
-<view>
-    <block wx:for="{{list}}" wx:key="id">
-        <van-swipe-cell right-width="{{ 160 }}" left-width="{{80}}">
-            <view slot="left" class="left">
-                <view class="bg-green item" bindtap="handleRead" data-moment="{{item}}">查看</view>
-            </view>
-            <van-cell-group>
-                <view class="cu-list menu-avatar">
-                    <view class="cu-item">
-                        <view class="cu-avatar round lg" style="background-image:url({{item.user[0].avatarUrl}});"></view>
-                        <view class="content">
-                            <view class="text-grey">{{item.user[0].nickName}}</view>
-                            <view class="text-gray text-sm flex">
-                                <text class="text-cut">
-                                    <text>{{item.content}}</text>
-                                </text>
-                            </view>
-                        </view>
-                        <view class="action">
-                            <view class="text-grey text-xs">{{item.create_time}}</view>
+<van-empty wx:if="{{list.length===0}}" description="您还没有发布过时刻哦~" />
+
+<view wx:if="{{isLoading}}" class="loading">
+    <view class="spinner"></view>
+</view>
+
+<block wx:for="{{list}}" wx:key="id">
+    <van-swipe-cell right-width="{{ 160 }}" left-width="{{80}}">
+        <view slot="left" class="left">
+            <view class="bg-green item" bindtap="handleRead" data-moment="{{item}}">查看</view>
+        </view>
+        <van-cell-group>
+            <view class="cu-list menu-avatar">
+                <view class="cu-item">
+                    <view class="cu-avatar round lg" style="background-image:url({{item.user[0].avatarUrl}});"></view>
+                    <view class="content">
+                        <view class="text-grey">{{item.user[0].nickName}}</view>
+                        <view class="text-gray text-sm flex">
+                            <text class="text-cut">
+                                <text>{{item.content}}</text>
+                            </text>
                         </view>
                     </view>
+                    <view class="action">
+                        <view class="text-grey text-xs">{{item.create_time}}</view>
+                    </view>
                 </view>
-            </van-cell-group>
-            <view slot="right" class="right">
-                <view class="bg-blue item" bindtap="handleUpdate" data-moment="{{item}}">编辑</view>
-                <view class="bg-red item" bindtap="handleDelete" data-id="{{item._id}}" data-fileIds="{{item.fileIds}}">删除</view>
             </view>
-        </van-swipe-cell>
-    </block>
-</view>
+        </van-cell-group>
+        <view slot="right" class="right">
+            <view class="bg-blue item" bindtap="handleUpdate" data-moment="{{item}}">编辑</view>
+            <view class="bg-red item" bindtap="handleDelete" data-id="{{item._id}}" data-fileIds="{{item.fileIds}}">删除</view>
+        </view>
+    </van-swipe-cell>
+</block>

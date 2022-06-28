@@ -1,0 +1,43 @@
+.top {
+    z-index: -100;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 800rpx;
+    width: 100vw;
+}
+
+.top image {
+    width: 100%;
+    height: 100%;
+}
+
+.box {
+    height: 15vh;
+    background-color: #72D799;
+    border-radius: 20rpx;
+    box-shadow: 15px 15px 30px #bebebe,
+    -15px -15px 30px #ffffff;
+}
+
+.font {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+    font-size: 60rpx;
+    font-family: 华文楷体;
+    color: white;
+}
+
+
+.introduction {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 100%;
+}
+
+

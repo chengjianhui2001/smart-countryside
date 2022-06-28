@@ -19,7 +19,7 @@ Page({
         })
     },
     //选择图片
-    ChooseImage(){
+    chooseImage(){
         wx.chooseImage({
             count: 9, //默认9
             sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
@@ -31,7 +31,7 @@ Page({
                     })
                     res.tempFilePaths.forEach((item,index)=>{
                         wx.showLoading({
-                            title:'上传中...'
+                            title:'添加中...'
                         })
                         let fileName=Date.now()+Math.floor(Math.random()*100000);
                         this.handleUpload(fileName,item,parseInt(index+this.data.imgList.length-1))
@@ -42,7 +42,7 @@ Page({
                     })
                     res.tempFilePaths.forEach((item,index)=>{
                         wx.showLoading({
-                            title:'上传中...'
+                            title:'添加中...'
                         })
                         let fileName=Date.now()+Math.floor(Math.random()*100000);
                         this.handleUpload(fileName,item,index)
@@ -52,14 +52,14 @@ Page({
         });
     },
     //浏览图片
-    ViewImage:function (e) {
+    viewImage:function (e) {
         wx.previewImage({
             urls: this.data.imgList,
             current: e.currentTarget.dataset.url
         });
     },
     //删除图片
-    DelImg:function (e) {
+    delImg:function (e) {
         wx.showModal({
             title: '您正在删除图片...',
             content: '确定要删除该图片吗？',
@@ -109,7 +109,7 @@ Page({
         let _id = wx.getStorageSync('userInfo')._id
         if (this.data.content&&this.data.fileIds.length!==0){
             wx.showLoading({
-                title:'发布中',
+                title:'发布中...',
             })
             moment.add({
                 data: {
@@ -125,11 +125,10 @@ Page({
                     wx.hideLoading({
                         success:res1 => {
                             console.log(res)
-                            wx.redirectTo({
-                                url:'/pages/moments/moments',
+                            wx.navigateBack({
                                 success:res2 => {
                                     wx.showToast({
-                                        title:'发送成功',
+                                        title:'发布成功',
                                         icon:"success"
                                     })
                                 }

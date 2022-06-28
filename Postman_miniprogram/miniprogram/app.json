@@ -1,16 +1,13 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/first/first",
-    "pages/function/function",
     "pages/mine/mine",
     "pages/mine/user/userInfo/userInfo",
     "pages/mine/user/editUserInfo/editUserInfo",
-    "pages/dailyLaw/addDailyLaw/addDailyLaw",
     "pages/mine/help/aboutUs/aboutUs",
     "pages/mine/help/funIntroduction/funIntroduction",
-    "pages/moments/moments",
     "pages/dailyLaw/dailyLaw",
+    "pages/dailyLaw/addDailyLaw/addDailyLaw",
     "pages/dailyLaw/makeAnswer/makeAnswer",
     "pages/dailyLaw/history/history",
     "pages/dailyLaw/score/score",
@@ -20,7 +17,7 @@
     "pages/information/detailInformation/detailInformation",
     "pages/information/mgInformation/mgInformation",
     "pages/information/editInformation/editInformation",
-    "pages/test/test",
+    "pages/moments/moments",
     "pages/moments/addMoment/addMoment",
     "pages/moments/mgMoment/mgMoment",
     "pages/moments/updateMoment/updateMoment",
@@ -42,7 +39,11 @@
     "van-cell-group": "@vant/weapp/cell-group/index",
     "van-icon": "@vant/weapp/icon/index",
     "van-tab": "@vant/weapp/tab/index",
-    "van-tabs": "@vant/weapp/tabs/index"
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-sticky": "@vant/weapp/sticky/index",
+    "van-empty": "@vant/weapp/empty/index"
   },
   "tabBar": {
     "list": [
@@ -61,20 +62,5 @@
     ],
     "selectedColor": "#000000",
     "color": "#cdcdcd"
-  },
-  "plugins": {
-    "chooseLocation": {
-      "version": "1.0.9",
-      "provider": "wx76a9a06e5b4e693e"
-    },
-    "routePlan": {
-      "version": "1.0.19",
-      "provider": "wx50b5593e81dd937a"
-    }
-  },
-  "permission": {
-    "scope.userLocation": {
-      "desc": "你的位置信息将用于小程序定位"
-    }
   }
 }

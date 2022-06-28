@@ -4,14 +4,14 @@ const db = wx.cloud.database()
 Page({
     data: {
         list:[],
+        isLoading:true,
     },
 
     onShow(){
-        wx.showLoading({
-            title:'数据加载中'
-        })
         this.getData(res=>{
-            wx.hideLoading()
+            this.setData({
+                isLoading:false
+            })
         })
     },
 
@@ -80,9 +80,9 @@ Page({
 
     //查看
     handleRead(e){
-        let moment = e.currentTarget.dataset.moment
+        let info = e.currentTarget.dataset.moment
         wx.navigateTo({
-            url:'/pages/moments/detailMoment/detailMoment?moment='+JSON.stringify(moment)
+            url:'/pages/moments/detailMoment/detailMoment?info='+JSON.stringify(info)
         })
     },
 

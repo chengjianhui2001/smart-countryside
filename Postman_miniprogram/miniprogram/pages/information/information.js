@@ -8,32 +8,27 @@ Page({
     cultural:[],
     activity:[],
     inform:[],
+    isLoading:true
   },
 
   onLoad(options) {
-    wx.showLoading({
-      title:'数据加载中...'
-    })
+    // wx.showLoading({
+    //   title:'数据加载中...'
+    // })
     this.getCulturalData(res=>{
       this.getActivityData(res=>{
         this.getInformData(res=>{
-          wx.hideLoading()
+          this.setData({
+            isLoading:false
+          })
+          // wx.hideLoading()
         })
       })
     })
   },
 
-  //路由至详细界面。
-  // toDetail(){
-  //   wx.navigateTo({
-  //     url:'/pages/activity/detailActivity/detailActivity?fileId='
-  //   })
-  // },
-
   //监听切换页面
-  onChange(event) {
-    console.log(event.detail.name)
-  },
+  onChange(event) {},
 
   //获取文化类型的记录
   getCulturalData(callback){
@@ -90,6 +85,15 @@ Page({
           wx.hideLoading()
         })
       })
+    })
+  },
+  //详情页
+  toDetails(e){
+    let fileId = e.currentTarget.dataset.fileid
+    let title = e.currentTarget.dataset.title
+    console.log(fileId,title)
+    wx.navigateTo({
+      url:'/pages/information/detailInformation/detailInformation?fileId='+fileId+'&title='+title
     })
   }
 })

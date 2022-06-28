@@ -1,0 +1,18 @@
+.cu-form-group+.cu-form-group {
+    border-top: none;
+}
+
+button {
+    width: 150rpx;
+    height: 80rpx;
+    font-family: inherit;
+    background: royalblue;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.2s;
+}

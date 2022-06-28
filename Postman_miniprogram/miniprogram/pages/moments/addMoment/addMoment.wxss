@@ -1,6 +1,6 @@
 button {
-    width: 200rpx;
-    height: 100rpx;
+    width: 150rpx;
+    height: 80rpx;
     font-family: inherit;
     background: royalblue;
     color: white;
@@ -11,4 +11,8 @@ button {
     border-radius: 16px;
     overflow: hidden;
     transition: all 0.2s;
+}
+
+.cu-form-group+.cu-form-group {
+    border-top: none;
 }

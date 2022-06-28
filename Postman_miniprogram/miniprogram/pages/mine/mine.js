@@ -1,4 +1,3 @@
-// pages/mine/mine.js
 const db = wx.cloud.database()
 const user = db.collection('user')
 
@@ -9,48 +8,38 @@ Page({
    */
   data: {
     userInfo:null,
-    avatarUrl:null,
+    adminPattern:false
   },
-
-  onLoad(){
-    this.getAvatar()
-  },
-
   toUserInfo(){
     wx.navigateTo({
       url:'/pages/mine/user/userInfo/userInfo'
     })
   },
-
   //登录函数
   login(){
     wx.getUserProfile({
       desc: '用于登录智慧乡镇',
       success: res => {
+        var userInfo = res.userInfo
         //设置局部用户信息
         this.setData({
-          userInfo: res.userInfo
-        },res=>{
-          console.log('设置局部页面用户信息',this.data.userInfo)
+          userInfo: userInfo
         })
         //将用户信息存入数据库
         user.where({
           _openid: wx.getStorageSync('_openid')
         }).get({
           success: res => {
-            console.log("登录后判断数据中是否含有用户信息，如果有则将用户信息设置全局。",res)
             //原先没有添加，这里添加
             if (!res.data[0]) {
+              userInfo.status = 'user'
               //将数据添加到数据库
               user.add({
-                data: this.data.userInfo,
+                data: userInfo,
                 success:res=>{
-                  console.log("获取新增用户的信息的用户id",res)
                   try {
-                    let userInfo = this.data.userInfo
                     userInfo._id = res._id
                     wx.setStorageSync('userInfo',userInfo)
-                    console.log("缓存新用户信息成功")
                   } catch (e) { console.log(e) }
                 }
               })
@@ -61,15 +50,15 @@ Page({
               })
               try {
                 wx.setStorageSync('userInfo', res.data[0])
-                console.log('缓存userInfo',wx.getStorageSync('userInfo'))
-              } catch (e) { console.log(e) }
+              } catch (e) {
+                console.log(e)
+              }
             }
           }
         })
       }
     })
   },
-
   /**
    * 生命周期函数--监听页面显示
    */
@@ -84,6 +73,15 @@ Page({
         userInfo:userInfo
       })
     }
+    wx.getStorage({
+      key:'adminPattern',
+      encrypt:true,
+      success:res=>{
+        this.setData({
+          adminPattern:res.data
+        })
+      }
+    })
   },
 
   /**
@@ -97,26 +95,5 @@ Page({
         console.log(res)
       }
     })
-  },
-
-  //加载默认头像
-  getAvatar(){
-    let avatarUrl = wx.getStorageSync('avatarUrl')
-    if (avatarUrl){
-      this.setData({
-        avatarUrl:avatarUrl
-      })
-    }else{
-      wx.cloud.getTempFileURL({
-        fileList:['cloud://cloud1-5g1oimlb11d4eb78.636c-cloud1-5g1oimlb11d4eb78-1312470390/static/avatar.png'],
-        success:res=>{
-          let avatarUrl = res.fileList[0].tempFileURL
-          this.setData({
-            avatarUrl:avatarUrl
-          })
-          wx.setStorageSync('avatarUrl',avatarUrl)
-        }
-      })
-    }
   },
 })

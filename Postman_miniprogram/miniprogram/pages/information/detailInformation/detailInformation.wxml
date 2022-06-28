@@ -1,3 +1,7 @@
+<view wx:if="{{isLoading}}" class="loading">
+    <view class="spinner"></view>
+</view>
+
 <view class="container">
     <towxml nodes="{{article}}"/>
 </view>

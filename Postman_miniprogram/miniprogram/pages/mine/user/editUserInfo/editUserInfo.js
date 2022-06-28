@@ -1,4 +1,6 @@
 // pages/editUserInfo/editUserInfo.js
+const utils = require('../../../../utils/index')
+const {el} = require("../../../../towxml/parse/parse2/entities/maps/entities");
 const db = wx.cloud.database()
 const user = db.collection('user')
 
@@ -10,12 +12,11 @@ Page({
   data: {
     nickName:null,
     gender:0,
-    checked:null,
+    checked:true,
     phoneNumber:null,
     province:null,
     city:null,
     district:null,
-    detailAddress:null,
     region: ['北京市', '北京市', '东城区'],
   },
 
@@ -33,23 +34,22 @@ Page({
       })
     }
   },
+
   //地址选择器
   RegionChange: function(e) {
     this.setData({
       region: e.detail.value
     })
   },
+
   //input框输入监听
   printInput:function (e){},
 
   //生命周期函数--监听页面显示
-  onShow() {
+  onLoad() {
     try{
       let userInfo = wx.getStorageSync('userInfo')
       if (userInfo){
-        this.setData({
-          userInfo:userInfo
-        })
         this.setData({
           nickName:userInfo.nickName
         })
@@ -95,41 +95,44 @@ Page({
   //修改用户信息
   handleEdit(){
     let _id = wx.getStorageSync('userInfo')._id
-    if (this.data.nickName&&this.data.gender&&this.data.phoneNumber&&this.data.region&&this.data.detailAddress){
-      wx.showLoading({
-        title:'提交中...'
-      })
-      user.doc(_id).update({
-        data: {
-          nickName:this.data.nickName,
-          gender:parseInt(this.data.gender),
-          phoneNumber:this.data.phoneNumber,
-          province:this.data.region[0],
-          city:this.data.region[1],
-          district:this.data.region[2],
-          detailAddress:this.data.detailAddress,
-        },
-        success:res => {
-          if (res.errMsg === 'document.update:ok') {
-            user.doc(_id).get({
-              success: res => {
-                console.log('提交编辑成功后根据用户id查询编辑后的用户信息',res)
-                try {
-                  wx.setStorageSync('userInfo', res.data)
-                  wx.navigateBack({
-                    success:result => {
-                      wx.hideLoading();
-                      wx.showToast({
-                        title:'编辑成功'
-                      })
-                    }
-                  })
-                } catch (e) { console.log(e) }
-              }
-            })
+    if (this.data.nickName&&this.data.gender&&this.data.region){
+      if (utils.checkPhoneNumber(this.data.phoneNumber)){
+        wx.showLoading({
+          title:'提交中...'
+        })
+        user.doc(_id).update({
+          data: {
+            nickName:this.data.nickName,
+            gender:parseInt(this.data.gender),
+            phoneNumber:this.data.phoneNumber,
+            province:this.data.region[0],
+            city:this.data.region[1],
+            district:this.data.region[2],
+          },
+          success:res => {
+            if (res.errMsg === 'document.update:ok') {
+              user.doc(_id).get({
+                success: res => {
+                  console.log('提交编辑成功后根据用户id查询编辑后的用户信息',res)
+                  try {
+                    wx.setStorageSync('userInfo', res.data)
+                    wx.navigateBack({
+                      success:result => {
+                        wx.hideLoading();
+                        wx.showToast({
+                          title:'编辑成功'
+                        })
+                      }
+                    })
+                  } catch (e) { console.log(e) }
+                }
+              })
+            }
           }
-        }
-      })
+        })
+      }else{
+        wx.showToast({title:'联系方式不正确！',icon:"error"})
+      }
     }else{
       wx.showToast({title:'请将数据填写完整！',icon:"error"})
     }
