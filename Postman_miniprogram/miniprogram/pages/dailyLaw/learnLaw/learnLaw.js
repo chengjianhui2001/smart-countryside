@@ -9,7 +9,7 @@ Page({
     onLoad: function (options) {
         const _ts = this;
         wx.cloud.getTempFileURL({
-            fileList: ['cloud://cloud1-5g1oimlb11d4eb78.636c-cloud1-5g1oimlb11d4eb78-1312470390/activity/md/md_1656440514634.md'],
+            fileList: ['cloud://cloud1-5g1oimlb11d4eb78.636c-cloud1-5g1oimlb11d4eb78-1312470390/static/法在你身边.md'],
             success: res => {
                 // get temp file URL
                 console.log('得到临时链接',res.fileList[0].tempFileURL)

@@ -35,21 +35,28 @@
 </view>
 
 
+
+<view class="padding-xl"></view>
+<view class="padding-xl"></view>
+<view class="padding-xl"></view>
+<view class="padding-xl"></view>
+<view class="padding-xl"></view>
+<view class="padding-xl"></view>
 <navigator url="/pages/mine/user/editUserInfo/editUserInfo" hover-class="none">
     <view class="padding padding-top-xs padding-bottom-xs">
-        <button class="cu-btn bg-green lg block">编辑</button>
+        <button class="cu-btn round bg-green lg block">编辑</button>
     </view>
 </navigator>
 <view class="padding padding-top-xs padding-bottom-xs">
-    <button class="cu-btn bg-red lg block" bindtap="exit">退出</button>
+    <button class="cu-btn round bg-red lg block" bindtap="exit">退出</button>
 </view>
 <view wx:if="{{userInfo.status==='admin'&& !adminPattern}}" class="padding padding-top-xs padding-bottom-xs">
-    <button class="cu-btn bg-blue lg block" bind:tap="changeStatus">切换管理员</button>
+    <button class="cu-btn round bg-blue lg block" bind:tap="changeStatus">切换管理员</button>
 </view>
 <view wx:if="{{userInfo.status==='admin'&& adminPattern}}" class="padding padding-top-xs padding-bottom-xs">
-    <button class="cu-btn bg-blue lg block" bind:tap="changeStatus2">切换用户</button>
+    <button class="cu-btn round bg-blue lg block" bind:tap="changeStatus2">切换用户</button>
 </view>
 <view wx:if="{{userInfo.status!=='admin'&& !adminPattern}}" class="padding padding-top-xs padding-bottom-xs">
-    <button class="cu-btn bg-white lg block" bind:tap="applyForAdmin">申请管理员</button>
+    <button class="cu-btn round bg-white lg block" bind:tap="applyForAdmin">申请管理员</button>
 </view>
 

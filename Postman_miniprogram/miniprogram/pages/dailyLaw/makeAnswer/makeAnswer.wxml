@@ -2,7 +2,7 @@
     <view class="spinner"></view>
 </view>
 
-<van-empty wx:if="{{empty}}" description="今日还未发布答题哦！" />
+<van-empty wx:if="{{questions.length===0}}" description="今日还未发布答题哦！" />
 
 <view wx:else>
     <view class="cu-bar justify-between  border-title">

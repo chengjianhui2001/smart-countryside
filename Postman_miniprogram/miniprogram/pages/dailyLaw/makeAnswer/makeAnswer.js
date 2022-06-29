@@ -8,7 +8,6 @@ Page({
    */
   data: {
     isLoading:true,
-    empty:false,
     index:0,
     openAnimate:"A",
     choose1:false,
@@ -16,8 +15,9 @@ Page({
     choose3:false,
     choose4:false,
     user_answers:[],
-    questions_id:null,
-    title:null,
+
+    questions_id:'',
+    title:'',
     count:0,
     questions:[],
   },
@@ -27,16 +27,9 @@ Page({
    */
   onLoad(options) {
     this.getData(res=>{
-      if (res.data.length===0){
-        this.setData({
-          isLoading:false,
-          empty:true
-        })
-      }else{
-        this.setData({
-          isLoading:false
-        })
-      }
+      this.setData({
+        isLoading:false
+      })
     })
   },
 
@@ -57,19 +50,21 @@ Page({
         .get({
           success:res => {
             console.log(res)
-            this.setData({
-              questions_id:res.data[0]._id,
-              title:res.data[0].title,
-              count:res.data[0].count,
-              questions:res.data[0].questions
-            },()=>{
-              callback(res)
-            })
+            if (res.data.length===0){
+              callback()
+            }else{
+              this.setData({
+                questions_id: res.data[0]._id,
+                title: res.data[0].title,
+                count: res.data[0].count,
+                questions: res.data[0].questions
+              },res=>{
+                callback()
+              })
+            }
           }
         })
   },
-
-
 
 
   submitDB(){
