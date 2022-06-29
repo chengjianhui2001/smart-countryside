@@ -1,0 +1,86 @@
+<view id="">
+    <view class="animated {{isCreated?'fadeOutRight none':''}} ">
+        <view class="cu-bar solid-bottom">
+            <view class='action'>
+                <text class='cuIcon-titles text-orange '></text>创建普法答题
+            </view>
+        </view>
+        <view>
+            <view class="cu-form-group">
+                <view class="title">题集名称</view>
+                <input model:value="{{title}}" placeholder="请输入题集名称" bind:input="handleInput"></input>
+            </view>
+            <view class="cu-form-group">
+                <view class="title">题目数量</view>
+                <input type="number" model:value="{{count}}" placeholder="请输入题目数量" bind:input="handleInput"/>
+            </view>
+        </view>
+        <view class="padding flex flex-direction">
+            <button class="cu-btn bg-blue margin-tb-sm lg" bindtap="create">创建</button>
+        </view>
+    </view>
+    <view wx:if="{{index<count}}" id="{{isCreated?'normal':''}}" class="animated {{isCreated?'fadeInDown':'none'}}">
+        <view class="cu-bar">
+            <view class='action'>
+                <text class='cuIcon-titles text-orange '></text>编辑内容 {{index+1}}/{{count}}
+            </view>
+        </view>
+        <view class="flex flex-sub justify-center">
+                <view class="card bg-white">
+                    <view class="cu-form-group radius-top">
+                        <view class="title">题目</view>
+                        <input model:value="{{question}}" placeholder="请输入题目" bind:input="handleInput"></input>
+                    </view>
+                    <view class="cu-form-group">
+                        <view class="title">选项一</view>
+                        <input model:value="{{choose1}}" placeholder="请输入选项一" bind:input="handleInput"></input>
+                        <checkbox class="round" model:checked="{{option1}}"></checkbox>
+                    </view>
+                    <view class="cu-form-group">
+                        <view class="title">选项二</view>
+                        <input model:value="{{choose2}}" placeholder="请输入选项二" bind:input="handleInput"></input>
+                        <checkbox class="round"  model:checked="{{option2}}"></checkbox>
+                    </view>
+                    <view class="cu-form-group">
+                        <view class="title">选项三</view>
+                        <input model:value="{{choose3}}" placeholder="请输入选项三" bind:input="handleInput"></input>
+                        <checkbox class="round"  model:checked="{{option3}}"></checkbox>
+                    </view>
+                    <view class="cu-form-group">
+                        <view class="title">选项四</view>
+                        <input model:value="{{choose4}}" placeholder="请输入选项四" bind:input="handleInput"></input>
+                        <checkbox class="round"  model:checked="{{option4}}"></checkbox>
+                    </view>
+                </view>
+        </view>
+        <view class="padding flex justify-center">
+            <button wx:if="{{index<count}}" class="cu-btn bg-blue margin-tb-sm lg" bindtap="next">下一条</button>
+        </view>
+    </view>
+
+    <view wx:if="{{isSubmit}}" class="padding flex justify-center flex-direction">
+        <block wx:for="{{questions}}" wx:key="id">
+            <view class="cu-list menu">
+                <view class="cu-item">
+                    <view class="content">
+                        <text class="text-grey">题目:{{item.question}}</text>
+                    </view>
+                </view>
+                <block wx:for="{{item.choose}}" wx:key="id">
+                    <view class="cu-item">
+                        <view class="content">
+                            <text class="text-grey">选项{{index+1}}:{{item}}</text>
+                        </view>
+                    </view>
+                </block>
+                <view class="cu-item">
+                    <view class="content">
+                        <text class="text-grey">答案:{{item.answer}}</text>
+                    </view>
+                </view>
+            </view>
+        </block>
+        <button class="cu-btn bg-green margin-tb-sm lg" bindtap="submit">提交</button>
+    </view>
+
+</view>

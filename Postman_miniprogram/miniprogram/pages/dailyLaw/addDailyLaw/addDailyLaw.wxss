@@ -1,0 +1,24 @@
+/* pages/mine/admin/addDailyLaw/addDailyLaw.wxss */
+.none {
+    display: none;
+}
+
+#normal {
+    display:block;
+}
+
+.card {
+    width: 90%;
+    min-height: 200rpx;
+    border-radius: 20rpx;
+}
+
+.radius-bottom {
+    border-bottom-right-radius: 20rpx;
+    border-bottom-left-radius: 20rpx;
+}
+
+.radius-top {
+    border-top-right-radius: 20rpx;
+    border-top-left-radius: 20rpx;
+}
