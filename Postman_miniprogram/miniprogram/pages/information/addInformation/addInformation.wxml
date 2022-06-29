@@ -38,7 +38,7 @@
         </view>
     </view>
     <view class="cu-form-group">
-        <view class="title">文件上传</view>
+        <view class="title">上传md文件</view>
         <view>
             <button wx:if="{{!file}}" class="cu-btn bg-green" bind:tap="chooseFile">
                 <text class="cuIcon-add text-bold text-lg"/>选择文件</button>
