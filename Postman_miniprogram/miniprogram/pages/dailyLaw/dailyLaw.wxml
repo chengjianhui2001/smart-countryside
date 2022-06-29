@@ -1,39 +1,23 @@
-<!--pages/daliyLaw/dailyLaw.wxml-->
-<view id="main" class="flex justify-center align-start">
-    <view class="box margin-top-xl">
-        <view class="flex flex-direction">
-            <view class="flex flex-sub justify-center align-center padding-xs" style="font-size:40rpx">
-                <view class="line bg-brown margin-right-xs"></view>
-                <text class="text-brown text-bold padding-xs">知识答题</text>
-                <view class="line bg-brown margin-right-xs"></view>
+<view class="bg-img padding-bottom-xl" style="background-image: url('https://img.gejiba.com/images/75774ecc84b0d49e45aa8256dfb93a3c.jpg');height: 100vh;">
+    <view class="padding text-center padding-top-xl">
+        <text class="text-bold text-brown">今日最高分:{{score===-1?'今日暂无成绩':score}}</text>
+    </view>
+    <view class="flex flex-direction position-button">
+        <navigator url="/pages/dailyLaw/learnLaw/learnLaw" hover-class="none">
+            <view class="padding-xs">
+                <button class="cu-btn bg-brown round">开始学习</button>
             </view>
-            <view class="flex flex-sub justify-center padding-xs" style="font-size:100rpx">
-                <text class="text-black text-bold">每 日 普 法</text>
+        </navigator>
+        <navigator url="/pages/dailyLaw/makeAnswer/makeAnswer" hover-class="none">
+           <view class="padding-xs">
+               <button class="cu-btn bg-brown round">开始答题</button>
+           </view>
+        </navigator>
+        <navigator url="/pages/dailyLaw/history/history" hover-class="none">
+            <view class="padding-xs">
+                <button class="cu-btn bg-brown round">查看记录</button>
             </view>
-            <view class="text-center text-box">
-                <view class="text-df padding-xs">法小弛则是非驳。</view>
-                <view class="text-df padding-xs">法律面前人人平等。</view>
-                <view class="text-df padding-xs">法律之内，应有天理人情在。</view>
-                <view class="text-df padding-xs">小恶不容于乡，大恶不容于国。</view>
-                <view class="text-df padding-xs">宪法，就是一张写着人民权利的纸。</view>
-                <view class="text-df padding-xs">法律是人民意志的自由而庄严的表现。</view>
-                <view class="text-df padding-xs">家有常业，虽饥不饿；国有常法，虽危不亡。</view>
-            </view>
-            <view class="flex justify-center padding-xl">
-                <navigator url="/pages/dailyLaw/history/history" hover-class="none">
-                    <button class="cu-btn block bg-brown margin-right">
-                        <text class="cuIcon-time"></text>查看记录
-                    </button>
-                </navigator>
-                <navigator url="/pages/dailyLaw/makeAnswer/makeAnswer" hover-class="none">
-                    <button class="cu-btn block bg-brown">
-                        <text class="cuIcon-game"></text> 开始答题
-                    </button>
-                </navigator>
-            </view>
-            <view class="flex flex-sub justify-center margin-bottom">
-                <text class="text-bold text-blue">今日最高分:{{score===-1?'今日暂无成绩':score}}</text>
-            </view>
-        </view>
+        </navigator>
     </view>
 </view>
+

@@ -3,7 +3,7 @@
     width: 90%;
     min-height: 450rpx;
     border-radius: 50rpx;
-    background-color: dodgerblue;
+    background-color: white;
 }
 
 .card-body {

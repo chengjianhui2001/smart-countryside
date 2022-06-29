@@ -100,4 +100,40 @@ Page({
       }
     })
   },
+  //申请管理员
+  applyForAdmin(){
+    let user_id = wx.getStorageSync('userInfo')._id
+    wx.showModal({
+      title:'您正在认证管理员',
+      editable:true,
+      placeholderText:'请输入管理员认证码',
+      success:res=>{
+        console.log(res)
+        if (res.confirm){
+          if (res.content==="微信小程序"){
+            wx.showLoading({
+              title:'认证中...'
+            })
+            wx.cloud.database().collection('user').doc(user_id).update({
+              data:{
+                status:"admin",
+              },
+              success:()=>{
+                wx.cloud.database().collection('user').doc(user_id).get({
+                  success:res=>{
+                    wx.setStorageSync('userInfo',res.data)
+                    this.onShow()
+                    wx.hideLoading()
+                  }
+                })
+              }
+            })
+          }
+        }
+      },
+      fail:res=>{
+        console.log(res)
+      }
+    })
+  },
 })

@@ -49,4 +49,7 @@
 <view wx:if="{{userInfo.status==='admin'&& adminPattern}}" class="padding padding-top-xs padding-bottom-xs">
     <button class="cu-btn bg-blue lg block" bind:tap="changeStatus2">切换用户</button>
 </view>
+<view wx:if="{{userInfo.status!=='admin'&& !adminPattern}}" class="padding padding-top-xs padding-bottom-xs">
+    <button class="cu-btn bg-white lg block" bind:tap="applyForAdmin">申请管理员</button>
+</view>
 

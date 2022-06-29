@@ -1,3 +1,4 @@
+const utils = require("../../utils/index");
 Page({
 
   /**
@@ -39,6 +40,11 @@ Page({
         this.setData({
           cultural:res.result.list
         },res=>{
+          for (let index in this.data.cultural){
+            this.setData({
+              [`cultural[${index}].create_time`]:utils.timeFormat(this.data.cultural[index].create_time)
+            })
+          }
           callback()
         })
       }
@@ -53,6 +59,11 @@ Page({
         this.setData({
           activity:res.result.list
         },res=>{
+          for (let index in this.data.activity){
+            this.setData({
+              [`activity[${index}].create_time`]:utils.timeFormat(this.data.activity[index].create_time)
+            })
+          }
           callback()
         })
       }
@@ -67,6 +78,11 @@ Page({
         this.setData({
           inform:res.result.list
         },res=>{
+          for (let index in this.data.inform){
+            this.setData({
+              [`inform[${index}].create_time`]:utils.timeFormat(this.data.inform[index].create_time)
+            })
+          }
           callback()
         })
       }

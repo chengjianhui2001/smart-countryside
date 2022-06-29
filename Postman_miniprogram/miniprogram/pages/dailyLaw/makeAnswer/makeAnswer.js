@@ -7,6 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isLoading:true,
+    empty:false,
     index:0,
     openAnimate:"A",
     choose1:false,
@@ -24,12 +26,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    console.log("初始化运行...")
-    wx.showLoading({
-      title:'数据加载中'
-    })
     this.getData(res=>{
-      wx.hideLoading()
+      if (res.data.length===0){
+        this.setData({
+          isLoading:false,
+          empty:true
+        })
+      }else{
+        this.setData({
+          isLoading:false
+        })
+      }
     })
   },
 
@@ -55,25 +62,21 @@ Page({
               title:res.data[0].title,
               count:res.data[0].count,
               questions:res.data[0].questions
-            },res=>{
-              callback()
+            },()=>{
+              callback(res)
             })
           }
         })
   },
 
 
-  nextDB(){
-    console.log('防抖')
-    clearTimeout(this.TimeID);
-    this.TimeID = setTimeout(() => {
-      console.log('执行')
-      this.next()
-    }, 500);
-  },
+
 
   submitDB(){
-    console.log('防抖')
+    wx.showLoading({
+      title:'提交中...'
+    })
+    console.log('持续点击')
     clearTimeout(this.TimeID);
     this.TimeID = setTimeout(() => {
       console.log('执行')
@@ -84,41 +87,10 @@ Page({
   chooseAnswer(e){},
 
   getValue(e){
-    console.log(e)
+    let index = e.currentTarget.dataset.index
     this.setData({
-      [`user_answers[${this.data.index}]`]:e.detail.value
-    },res=>{
-      console.log(this.data.user_answers)
+      [`user_answers[${index}]`]:e.detail.value
     })
-  },
-
-  next(){
-    if (this.data.user_answers[this.data.index]===undefined){
-      wx.showToast({
-        title:"请选择一个答案",
-        icon:"none"
-      })
-    }else {
-      this.setData({
-        openAnimate:"B"
-      },res=>{
-        setTimeout(res=>{
-          this.setData({
-            index:this.data.index+1,
-            choose1:false,
-            choose2:false,
-            choose3:false,
-            choose4:false,
-          },res=>{
-            setTimeout(res=>{
-              this.setData({
-                openAnimate:"A"
-              })
-            },1000)
-          })
-        },1000)
-      })
-    }
   },
 
   score:function(){
@@ -131,26 +103,38 @@ Page({
     return score
   },
 
+  isEmpty(){
+    let flag = true
+    if (this.data.user_answers.length===0){
+      flag = false
+    }else if (this.data.user_answers.length!==this.data.count){
+      flag = false
+    }else{
+      for (let item of this.data.user_answers){
+        if (item === undefined){
+          flag = false
+        }
+      }
+    }
+    return flag
+  },
+
   submit(){
-    if (this.data.user_answers[this.data.index]===undefined){
+    if (!this.isEmpty()){
       wx.showToast({
-        title:"请选择一个答案",
-        icon:"none"
+        icon:'none',
+        title:`请将答案选择完整后在提交！`
       })
     }else {
-      wx.showLoading({
-        title:'提交中'
-      })
       let user_id = wx.getStorageSync('userInfo')._id
       let score = this.score()
       let data = {
-        user_id:user_id,
-        questions_id:this.data.questions_id,
-        score:score,
-        user_answers:this.data.user_answers,
-        create_time:new Date()
+        user_id: user_id,
+        questions_id: this.data.questions_id,
+        score: score,
+        user_answers: this.data.user_answers,
+        create_time: new Date()
       }
-      console.log(data)
       db.collection('use_relate_law_question').add({
         data: {
           user_id: user_id,
@@ -159,7 +143,6 @@ Page({
           score: score,
           user_answers: this.data.user_answers,
           create_time: new Date(),
-          create_time_show:this.TimeFormat(new Date())
         },
         success:res=>{
           wx.redirectTo({
@@ -170,27 +153,46 @@ Page({
           })
         }
       })
+
     }
   },
 
-  timeFormat(time){
-    let date = new Date(time);
-    let YY = date.getFullYear() + '-';
-    let MM = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
-    let DD = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate());
-    return YY + MM + DD;
-  },
 
-  //时间格式化
-  TimeFormat(time){
-    let date = new Date(time);
-    let YY = date.getFullYear() + '-';
-    let MM = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
-    let DD = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate());
-    let hh = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
-    let mm = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
-    let ss = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
-    return YY + MM + DD + " " + hh + mm + ss;
-  },
+  /*nextDB(){
+  console.log('持续点击')
+  clearTimeout(this.TimeID);
+  this.TimeID = setTimeout(() => {
+    console.log('执行')
+    this.next()
+  }, 500);
+},*/
 
+  /*next(){
+  if (!this.data.user_answers[this.data.index]){
+    wx.showToast({
+      title:"请选择一个答案",
+      icon:"none"
+    })
+  }else {
+    this.setData({
+      openAnimate:"B"
+    },res=>{
+      setTimeout(res=>{
+        this.setData({
+          index:this.data.index+1,
+          choose1:false,
+          choose2:false,
+          choose3:false,
+          choose4:false,
+        },res=>{
+          setTimeout(res=>{
+            this.setData({
+              openAnimate:"A"
+            })
+          },1000)
+        })
+      },1000)
+    })
+  }
+},*/
 })

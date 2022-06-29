@@ -1,14 +1,22 @@
 <cu-custom>
     <view slot="right" class="flex-sub">
         <view class="padding-left-lg">
-            <text class="text-black text-bold before">智慧乡镇</text>
+            <text class="text-black text-bold before" style="font-family:华文楷体"></text>
         </view>
     </view>
 </cu-custom>
 
-<view class="padding-xl  animated fadeInLeft" style="margin-top:100rpx">
+<view class="top">
+    <image src="cloud://cloud1-5g1oimlb11d4eb78.636c-cloud1-5g1oimlb11d4eb78-1312470390/static/wave-haikei (1).png"></image>
+</view>
+
+<view class="title-home">
+    <text class="text-bold">智慧乡镇</text>
+</view>
+
+<view class="padding-xl  animated fadeInLeft" style="margin-top:250rpx" >
     <navigator url="/pages/information/information" hover-class="none">
-        <view class="box flex justify-between bg-img bg-mask" style="background-image: url('https://img.gejiba.com/images/63fb3b0f8df8528d53dda62ac4575b21.jpg')">
+        <view class="box-no-shadow flex justify-between bg-img bg-mask" style="background-image: url('https://img.gejiba.com/images/63fb3b0f8df8528d53dda62ac4575b21.jpg')">
             <view class="font">晓万事</view>
         </view>
     </navigator>
@@ -16,7 +24,7 @@
 
 <view class="padding-xl  animated fadeInRight">
     <navigator url="/pages/moments/moments" hover-class="none">
-        <view class="box flex justify-between bg-img bg-mask" style="background-image: url('https://s2.loli.net/2022/06/25/NWX6rZMEem3LI79.jpg')">
+        <view class="box flex justify-between bg-img bg-mask" style="background-image: url('https://img.gejiba.com/images/8b4bdb4dd1170dbc1cbc2c60d25c7bd5.jpg')">
             <view class="introduction"></view>
             <view class="font">
                 览时刻
@@ -27,7 +35,7 @@
 
 <view class="padding-xl  animated fadeInLeft">
     <navigator url="/pages/dailyLaw/dailyLaw" hover-class="none">
-        <view class="box flex justify-between bg-img bg-mask" style="background-image: url('https://s2.loli.net/2022/06/25/2q9Ikhlr6MHn1dy.jpg')">
+        <view class="box flex justify-between bg-img bg-mask" style="background-image: url('https://img.gejiba.com/images/468fa209c7fab6fa5cc14fa71035d212.jpg')">
             <view class="font">知法律</view>
         </view>
     </navigator>

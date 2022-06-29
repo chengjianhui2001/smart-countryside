@@ -1,15 +1,41 @@
-<!--pages/dailyLaw/makeAnswer/makeAnswer.wxml-->
-<view>
+<view wx:if="{{isLoading}}" class="loading">
+    <view class="spinner"></view>
+</view>
+
+<van-empty wx:if="{{empty}}" description="今日还未发布答题哦！" />
+
+<view wx:else>
     <view class="cu-bar justify-between  border-title">
         <view class="action border-title">
-            <text class="text-xl text-bold text-blue">题集:{{title}}</text>
+            <text class="text-xl text-bold text-blue">题集名称:{{title}}</text>
             <text class="bg-gradual-blue" style="width:250rpx"></text>
         </view>
         <view class="action border-title">
-            <text class="text-xl text-bold text-blue">当前题目：{{index+1}}/{{count}}</text>
+            <text class="text-xl text-bold text-blue">题量：{{count}}</text>
         </view>
     </view>
-    <view class="flex justify-center padding-xs margin-top {{openAnimate==='B'?'fade':''}}">
+
+    <block wx:for="{{questions}}" wx:key="id">
+        <view class="flex justify-center padding-xs margin-top">
+            <view class="flex card justify-center align-center bg-white shadow-blur">
+                <view style="width:600rpx" class="flex-direction flex justify-center">
+                    <view class="action margin-sm">
+                        <text class="text-bold">{{index+1}}.{{item.question}}</text>
+                    </view>
+                    <radio-group class="block" bindchange="getValue" data-index="{{index}}">
+                       <block wx:for="{{item.choose}}" wx:key="id" wx:for-item="choose">
+                           <view class="card-body">
+                               <view class="title">A.{{choose}}</view>
+                               <radio class="blue radio" value="{{choose}}"></radio>
+                           </view>
+                       </block>
+                    </radio-group>
+                </view>
+            </view>
+        </view>
+    </block>
+
+    <!--<view class="flex justify-center padding-xs margin-top {{openAnimate==='B'?'fade':''}}">
         <view class="flex card justify-center align-center bg-gradual-green shadow-blur">
             <view style="width:600rpx" class="flex-direction flex justify-center">
                 <view class="action margin-sm">
@@ -35,9 +61,11 @@
                 </radio-group>
             </view>
         </view>
-    </view>
+    </view>-->
+
+
     <view class="padding-xl">
-        <button wx:if="{{index<count-1}}" class="cu-btn bg-blue block" bindtap="nextDB">下一题</button>
-        <button wx:else class="cu-btn bg-green block" bindtap="submitDB">提交</button>
+<!--        <button wx:if="{{index<count-1}}" class="cu-btn bg-blue block" bindtap="nextDB">下一题</button>-->
+        <button class="cu-btn bg-green block" bindtap="submitDB">提交</button>
     </view>
 </view>

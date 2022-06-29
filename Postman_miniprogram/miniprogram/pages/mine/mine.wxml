@@ -16,11 +16,11 @@
             <text class="cuIcon-title text-green"></text>我的
         </view>
     </view>
-    <view class="cu-list grid col-5 br no-border no-padding">
+    <view class="cu-list grid col-4 br no-border no-padding">
         <view class="cu-item">
             <navigator class="content" hover-class="none" url="/pages/moments/mgMoment/mgMoment" open-type="navigate">
                 <view class="cuIcon-radioboxfill text-blue"></view>
-                <text>时刻</text>
+                <text>我的时刻</text>
             </navigator>
         </view>
         <view class="cu-item">

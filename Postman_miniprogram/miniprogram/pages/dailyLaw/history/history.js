@@ -1,25 +1,29 @@
 // pages/dailyLaw/history/history.js
+const utils = require("../../../utils/index");
 const db = wx.cloud.database()
 
 Page({
 
-  /**
-   * 页面的初始数据
-   */
+
   data: {
     infos:[],
+    isLoading:true,
   },
 
     onLoad:function (){
-        wx.showLoading({
-            title:'数据加载中'
-        })
         this.getData2().then(res=>{
             console.log("获取数据",res)
             this.setData({
                 infos:res
             },res=>{
-                wx.hideLoading()
+                for (let index in this.data.infos){
+                    this.setData({
+                        [`infos[${index}].create_time`]:utils.timeFormat(this.data.infos[index].create_time)
+                    })
+                }
+                this.setData({
+                    isLoading:false
+                })
             })
         })
     },
@@ -80,7 +84,7 @@ Page({
                 .field({
                     title:true,
                     score: true,
-                    create_time_show: true,
+                    create_time: true,
                 })
                 .orderBy('create_time', 'desc')
                 .skip(i)

@@ -1,18 +1,5 @@
-/* pages/daliyLaw/dailyLaw.wxss */
-.box {
-    background-color: darksalmon;
-    width: 90%;
-    min-height: 500rpx;
-    border-radius: 50rpx 50rpx 20rpx 20rpx;
-}
-
-.line {
-    height: 5rpx;
-    width: 100rpx;
-}
-
-.text-box {
-    position: relative;
-    width: 100%;
-    min-height: 240rpx;
+.position-button {
+    position: absolute;
+    bottom: 460rpx;
+    right: 50rpx;
 }

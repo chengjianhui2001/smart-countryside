@@ -21,9 +21,12 @@
                             <view class="cu-item">
                                 <image class="cu-avatar round lg" src="{{item.userInfo[0].avatarUrl}}"></image>
                                 <view class="content flex-sub">
-                                    <view class="text-grey">{{item.userInfo[0].nickName}}</view>
+                                    <view class="text-black flex justify-between">
+                                        <view>{{item.userInfo[0].nickName}}</view>
+                                        <view class="text-gray text-sm">{{item.create_time}}</view>
+                                    </view>
                                     <view class="text-gray text-sm flex justify-between">
-                                        <view class="text-cut text-black" style="width:400rpx">简介:{{item.introduction}}</view>
+                                        <view class="text-cut" style="width:400rpx">简介:{{item.introduction}}</view>
                                         <!-- <view class="text-gray text-sm">
                                             <text class="cuIcon-favor margin-lr-xs"></text> 30
                                         </view> -->
@@ -54,9 +57,12 @@
                             <view class="cu-item">
                                 <image class="cu-avatar round lg" src="{{item.userInfo[0].avatarUrl}}"></image>
                                 <view class="content flex-sub">
-                                    <view class="text-grey">{{item.userInfo[0].nickName}}</view>
+                                    <view class="text-black flex justify-between">
+                                        <view>{{item.userInfo[0].nickName}}</view>
+                                        <view class="text-gray text-sm">{{item.create_time}}</view>
+                                    </view>
                                     <view class="text-gray text-sm flex justify-between">
-                                        <view class="text-cut text-black" style="width:400rpx">简介:{{item.introduction}}</view>
+                                        <view class="text-cut" style="width:400rpx">简介:{{item.introduction}}</view>
                                         <!-- <view class="text-gray text-sm">
                                             <text class="cuIcon-favor margin-lr-xs"></text> 30
                                         </view> -->
@@ -87,9 +93,12 @@
                             <view class="cu-item">
                                 <image class="cu-avatar round lg" src="{{item.userInfo[0].avatarUrl}}"></image>
                                 <view class="content flex-sub">
-                                    <view class="text-grey">{{item.userInfo[0].nickName}}</view>
+                                    <view class="text-black flex justify-between">
+                                        <view>{{item.userInfo[0].nickName}}</view>
+                                        <view class="text-gray text-sm">{{item.create_time}}</view>
+                                    </view>
                                     <view class="text-gray text-sm flex justify-between">
-                                        <view class="text-cut text-black" style="width:400rpx">简介:{{item.introduction}}</view>
+                                        <view class="text-cut" style="width:400rpx">简介:{{item.introduction}}</view>
                                         <!-- <view class="text-gray text-sm">
                                             <text class="cuIcon-favor margin-lr-xs"></text> 30
                                         </view> -->

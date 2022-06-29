@@ -1,26 +1,29 @@
-<!--pages/dailyLaw/details/details.wxml-->
-<view>
-    <view class="cu-bar justify-between  border-title">
-        <view class="action border-title">
-            <text class="text-xl text-bold text-blue">您本次得分为:{{score}}</text>
-            <text class="bg-gradual-blue" style="width:250rpx"></text>
-        </view>
+<view wx:if="{{isLoading}}" class="loading">
+    <view class="spinner"></view>
+</view>
+
+
+<view class="cu-bar justify-between  border-title">
+    <view class="action border-title">
+        <text class="text-xl text-bold text-blue">您本次得分为:{{score}}</text>
+        <text class="bg-gradual-blue" style="width:250rpx"></text>
     </view>
-    <block wx:for="{{questions}}" wx:key="id">
-        <view class="cu-list menu">
-            <view class="cu-item">
-                <view class="content padding-tb-sm">
-                    <view class="text-sm">
-                        <text class="text-black margin-right-xs">题目：{{item.question}}</text>
-                    </view>
-                    <view class="text-bold text-brown">
-                        <text class="margin-right-xs">答案：{{item.answer}}</text>
-                    </view>
-                    <view class="{{item.answer===user_answers[index]?'text-blue':'text-red'}} text-bold">
-                        <text class="margin-right-xs">您的答案：{{user_answers[index]}}</text>
-                    </view>
+</view>
+<block wx:for="{{questions}}" wx:key="id">
+    <view class="cu-list menu">
+        <view class="cu-item">
+            <view class="content padding-tb-sm">
+                <view class="text-sm">
+                    <text class="text-black margin-right-xs">题目：{{item.question}}</text>
+                </view>
+                <view class="text-bold text-green">
+                    <text class="margin-right-xs">答案：{{item.answer}}</text>
+                </view>
+                <view class="{{item.answer===user_answers[index]?'text-blue':'text-red'}} text-bold">
+                    <text class="margin-right-xs">您的答案：{{user_answers[index]}}</text>
                 </view>
             </view>
         </view>
-    </block>
-</view>
+    </view>
+</block>
+

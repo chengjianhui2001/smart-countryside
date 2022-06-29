@@ -4,21 +4,12 @@ Page({
     data: {
         isLoading: true,
         article: {},
-        title:'',
-        fileId:''
     },
 
     onLoad: function (options) {
         const _ts = this;
-        let fileId = options.fileId
-        let title = options.title
-        console.log(options)
-        this.setData({
-            title:title,
-            fileId:fileId
-        })
         wx.cloud.getTempFileURL({
-            fileList: [fileId],
+            fileList: ['cloud://cloud1-5g1oimlb11d4eb78.636c-cloud1-5g1oimlb11d4eb78-1312470390/activity/md/md_1656440514634.md'],
             success: res => {
                 // get temp file URL
                 console.log('得到临时链接',res.fileList[0].tempFileURL)
@@ -66,8 +57,8 @@ Page({
     onShareAppMessage:function (){
         let shareObj;
         return shareObj = {
-            title:this.data.title,
-            path:'/pages/information/detailInformation/detailInformation?fileId='+this.data.fileId,
+            title:'快乐普法',
+            path:'/pages/dailyLaw/learnLaw/learnLaw',
             success: res => {
                 console.log(res)
                 if (res.errMsg === 'shareAppMessage:ok') {
@@ -91,8 +82,8 @@ Page({
     onShareTimeline(){
         let shareObj;
         return shareObj = {
-            title:this.data.title,
-            path:'/pages/information/detailInformation/detailInformation?fileId='+this.data.fileId,
+            title:'快乐普法',
+            path:'/pages/dailyLaw/learnLaw/learnLaw',
         }
     },
 });
