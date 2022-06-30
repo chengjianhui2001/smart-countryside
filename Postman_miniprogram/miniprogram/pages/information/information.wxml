@@ -76,7 +76,7 @@
         </view>
     </van-tab>
 
-    <van-tab title="乡镇资讯">
+    <van-tab title="乡镇快报">
         <view class="page">
             <van-empty wx:if="{{inform.length===0}}" description="暂时还有相关信息哦" />
             <block wx:for="{{inform}}" wx:key="id">
@@ -84,7 +84,7 @@
                     <view class="cu-item shadow">
                         <view class="image">
                             <image src="{{item.coverId}}" mode="widthFix"></image>
-                            <view class="cu-tag bg-blue">{{item.type==='cultural'?'特色文化':item.type==='activity'?'乡镇活动':'乡镇资讯'}}</view>
+                            <view class="cu-tag bg-blue">{{item.type==='cultural'?'特色文化':item.type==='activity'?'乡镇活动':'乡镇快报'}}</view>
                             <view class="cu-bar bg-shadeBottom">
                                 <text class="text-cut">{{item.title}}</text>
                             </view>

@@ -8,11 +8,9 @@
                 <button class="cu-btn bg-brown round">开始学习</button>
             </view>
         </navigator>
-        <navigator url="/pages/dailyLaw/makeAnswer/makeAnswer" hover-class="none">
-           <view class="padding-xs">
-               <button class="cu-btn bg-brown round">开始答题</button>
-           </view>
-        </navigator>
+       <view class="padding-xs">
+           <button class="cu-btn bg-brown round" bind:tap="toMakeAnswer">开始答题</button>
+       </view>
         <navigator url="/pages/dailyLaw/history/history" hover-class="none">
             <view class="padding-xs">
                 <button class="cu-btn bg-brown round">查看记录</button>

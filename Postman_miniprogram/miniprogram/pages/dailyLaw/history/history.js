@@ -51,6 +51,11 @@ Page({
                               this.setData({
                                   infos:res
                               },res=>{
+                                  for (let index in this.data.infos){
+                                      this.setData({
+                                          [`infos[${index}].create_time`]:utils.timeFormat(this.data.infos[index].create_time)
+                                      })
+                                  }
                                   wx.hideLoading()
                               })
                           })

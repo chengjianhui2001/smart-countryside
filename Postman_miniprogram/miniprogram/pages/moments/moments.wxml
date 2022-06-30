@@ -41,7 +41,7 @@
             <view class="cu-list menu-avatar">
                 <view class="cu-item">
                     <view class="cu-avatar round lg" style="background-image:url({{item.user[0].avatarUrl}});">
-                        <view class="cu-tag badge {{item.user[0].gender===1?'cuIcon-male bg-blue':'cuIcon-female bg-pink'}}"></view>
+                        <view class="cu-tag badge {{item.user[0].gender===1?'cuIcon-male bg-blue':item.user[0].gender===2?'cuIcon-female bg-pink':''}}"></view>
                     </view>
                     <view class="content flex-sub">
                         <view>{{item.user[0].nickName}}</view>

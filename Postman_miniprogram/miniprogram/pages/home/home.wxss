@@ -3,7 +3,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    height: 50vh;
+    height: 800rpx;
     width: 100vw;
 }
 

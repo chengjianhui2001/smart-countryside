@@ -45,7 +45,7 @@ Page({
             create_time:_.lt(new Date(end))
           },
         ]))
-        .orderBy('create_time','desc')
+        .orderBy('create_time','asc')
         .limit(1)
         .get({
           success:res => {

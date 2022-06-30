@@ -50,7 +50,13 @@
             <text class="cuIcon-title text-blue"></text>管理员
         </view>
     </view>
-    <view class="cu-list grid col-5 no-border no-padding br">
+    <view class="cu-list grid col-4 no-border no-padding br">
+        <view class="cu-item">
+            <navigator class="content" hover-class="none" url="/pages/moments/mgAdmin/mgAdmin" >
+                <view class="cuIcon-radioboxfill text-blue"></view>
+                <text>时刻管理</text>
+            </navigator>
+        </view>
         <view class="cu-item">
             <navigator class="content" hover-class="none" url="/pages/dailyLaw/addDailyLaw/addDailyLaw" open-type="navigate">
                 <view class="cuIcon-send text-olive"></view>

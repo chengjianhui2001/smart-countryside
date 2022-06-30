@@ -11,7 +11,7 @@ exports.main = async (event, context) => {
     touser: wxContext.OPENID,
     msgtype: 'text',
     text: {
-      content: '欢迎使用智慧乡村，请问您遇到了什么问题吗？',
+      content: '欢迎使用智慧乡镇，请问您遇到了什么问题吗？',
     },
   })
   return 'success'

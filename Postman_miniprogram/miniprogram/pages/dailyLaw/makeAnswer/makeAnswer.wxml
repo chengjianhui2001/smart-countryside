@@ -25,7 +25,7 @@
                     <radio-group class="block" bindchange="getValue" data-index="{{index}}">
                        <block wx:for="{{item.choose}}" wx:key="id" wx:for-item="choose">
                            <view class="card-body">
-                               <view class="title">A.{{choose}}</view>
+                               <view class="title">{{index===0?'A':index===1?'B':index===2?'C':'D'}}.{{choose}}</view>
                                <radio class="blue radio" value="{{choose}}"></radio>
                            </view>
                        </block>

@@ -17,3 +17,11 @@ button::after{
     border: none;
     border-radius: 0;
 }
+
+.text-content-s {
+    padding: 0 30rpx 0;
+    min-height: 6.4em;
+    font-size: 30rpx;
+    margin-bottom: 20rpx;
+    line-height: 1.6;
+}

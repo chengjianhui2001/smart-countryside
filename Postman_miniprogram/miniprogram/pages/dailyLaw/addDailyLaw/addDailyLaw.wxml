@@ -29,21 +29,21 @@
                 <view class="card bg-white">
                     <view class="cu-form-group radius-top">
                         <view class="title">题目</view>
-                        <input model:value="{{question}}" placeholder="请输入题目" bind:input="handleInput"></input>
+                        <input model:value="{{question}}" placeholder="请输入题目" bind:input="handleInput" confirm-type="next"></input>
                     </view>
                     <view class="cu-form-group">
                         <view class="title">选项一</view>
-                        <input model:value="{{choose1}}" placeholder="请输入选项一" bind:input="handleInput"></input>
+                        <input model:value="{{choose1}}" placeholder="请输入选项一" bind:input="handleInput" confirm-type="next"></input>
                         <checkbox class="round" model:checked="{{option1}}"></checkbox>
                     </view>
                     <view class="cu-form-group">
                         <view class="title">选项二</view>
-                        <input model:value="{{choose2}}" placeholder="请输入选项二" bind:input="handleInput"></input>
+                        <input model:value="{{choose2}}" placeholder="请输入选项二" bind:input="handleInput" confirm-type="next"></input>
                         <checkbox class="round"  model:checked="{{option2}}"></checkbox>
                     </view>
                     <view class="cu-form-group">
                         <view class="title">选项三</view>
-                        <input model:value="{{choose3}}" placeholder="请输入选项三" bind:input="handleInput"></input>
+                        <input model:value="{{choose3}}" placeholder="请输入选项三" bind:input="handleInput" confirm-type="next"></input>
                         <checkbox class="round"  model:checked="{{option3}}"></checkbox>
                     </view>
                     <view class="cu-form-group">

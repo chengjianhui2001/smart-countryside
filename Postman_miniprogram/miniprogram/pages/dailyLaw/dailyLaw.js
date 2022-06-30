@@ -51,6 +51,66 @@ Page({
         })
   },
 
+    toMakeAnswer(){
+        let userInfo = wx.getStorageSync('userInfo')
+        if (userInfo){
+            wx.navigateTo({
+                url:"/pages/dailyLaw/makeAnswer/makeAnswer"
+            })
+        }else {
+            wx.showModal({
+                title:'提示',
+                content:'参与答题功能需要登录后才能使用，请您确认登录',
+                success:result => {
+                    if (result.confirm){
+                        wx.getUserProfile({
+                            desc: '用于登录智慧乡镇',
+                            success: res => {
+                                var userInfo = res.userInfo
+                                //将用户信息存入数据库
+                                db.collection('user').where({
+                                    _openid: wx.getStorageSync('_openid')
+                                }).get({
+                                    success: res => {
+                                        //原先没有添加，这里添加
+                                        if (!res.data[0]) {
+                                            userInfo.status = 'user'
+                                            //将数据添加到数据库
+                                            db.collection('user').add({
+                                                data: userInfo,
+                                                success:res=>{
+                                                    try {
+                                                        userInfo._id = res._id
+                                                        wx.setStorageSync('userInfo',userInfo)
+                                                    } catch (e) { console.log(e) }
+                                                }
+                                            })
+                                        } else {
+                                            //数据库中已经存在该openID
+                                            this.setData({
+                                                userInfo: res.data[0]
+                                            })
+                                            try {
+                                                wx.setStorageSync('userInfo', res.data[0])
+                                            } catch (e) {
+                                                console.log(e)
+                                            }
+                                        }
+                                    }
+                                })
+                            }
+                        })
+                    }else{
+                        console.log('取消登录')
+                    }
+                },
+                fail:(res)=>{
+                    console.log(res)
+                }
+            })
+        }
+    },
+
   timeFormat(time){
     let date = new Date(time);
     let YY = date.getFullYear() + '-';

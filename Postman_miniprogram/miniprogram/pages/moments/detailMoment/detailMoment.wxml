@@ -14,7 +14,7 @@
                     </view>
                 </view>
             </view>
-            <view class="text-content">
+            <view class="text-content-s">
                 {{moment.content}}
             </view>
             <view class="grid flex-sub padding-lr {{item.fileIds.length===1?'col-1':item.fileIds.length===2?'col-2':'col-3'}} grid-square">
