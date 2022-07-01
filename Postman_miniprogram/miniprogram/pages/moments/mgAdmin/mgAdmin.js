@@ -45,6 +45,7 @@ Page({
             content:'删除后数据无法恢复，您确定要删除吗？',
             success:result => {
                 if (result.confirm){
+                    console.log('这是编号id',_id);
                     console.log(fileList)
                     wx.showLoading({
                         title:'删除中...'

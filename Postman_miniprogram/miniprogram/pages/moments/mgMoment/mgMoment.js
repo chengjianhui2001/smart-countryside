@@ -51,7 +51,11 @@ Page({
                     wx.showLoading({
                         title:'删除中...'
                     })
-                    db.collection('moment').doc(_id).remove({
+                    wx.cloud.callFunction({
+                        name:'deleteMoment',
+                        data:{
+                            _id:_id
+                        },
                         success:res => {
                             wx.cloud.deleteFile({
                                 fileList: fileList,

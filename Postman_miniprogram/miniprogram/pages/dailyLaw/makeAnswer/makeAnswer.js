@@ -35,7 +35,8 @@ Page({
 
   getData(callback){
     let start = new Date(new Date(new Date().getTime()).setHours(0,0,0,0));
-    let end = new Date(new Date(new Date().getTime()).setHours(59,59,59,59));
+    let end = new Date(new Date(new Date().getTime()).setHours(23,59,59,59));
+    console.log(start,end);
     db.collection('law_question')
         .where(_.and([
           {
